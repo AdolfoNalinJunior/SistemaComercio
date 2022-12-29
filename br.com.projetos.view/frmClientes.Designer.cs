@@ -32,6 +32,14 @@
             this.lblTituloCadastroCliente = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.cbCidade = new System.Windows.Forms.ComboBox();
+            this.mtbCEP = new System.Windows.Forms.MaskedTextBox();
+            this.mtbCelular = new System.Windows.Forms.MaskedTextBox();
+            this.mtbTelefone = new System.Windows.Forms.MaskedTextBox();
             this.mtbCPF = new System.Windows.Forms.MaskedTextBox();
             this.mtbRG = new System.Windows.Forms.MaskedTextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -57,17 +65,16 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.mtbTelefone = new System.Windows.Forms.MaskedTextBox();
-            this.mtbCelular = new System.Windows.Forms.MaskedTextBox();
-            this.mtbCEP = new System.Windows.Forms.MaskedTextBox();
-            this.cbCidade = new System.Windows.Forms.ComboBox();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.btnSalvar = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
+            this.lblNomeConsulta = new System.Windows.Forms.Label();
+            this.txtNomeConsulta = new System.Windows.Forms.TextBox();
+            this.btnPesquisa = new System.Windows.Forms.Button();
+            this.dgConsultaCliente = new System.Windows.Forms.DataGridView();
+            this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgConsultaCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -142,6 +149,102 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dados pessoais";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(462, 236);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 37;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(381, 236);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.TabIndex = 36;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Location = new System.Drawing.Point(300, 236);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 35;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(219, 236);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(75, 23);
+            this.btnNovo.TabIndex = 34;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            // 
+            // cbCidade
+            // 
+            this.cbCidade.FormattingEnabled = true;
+            this.cbCidade.Items.AddRange(new object[] {
+            "Roraima, RR",
+            "Amapá, AP",
+            "Amazonas, AM",
+            "Pará, PA",
+            "Acre, AC",
+            "Rondônia, RO",
+            "Tocantins, TO",
+            "Maranhão, MA",
+            "Piauí, PI",
+            "Ceará, CE ",
+            "Rio Grande do Norte, RN",
+            "Paraíba, PB",
+            "Pernambuco, PE",
+            "Alagoas, AL",
+            "Sergipe, SE",
+            "Bahia, BA",
+            "Mato Grosso, MT",
+            "Distrito Federal, DF",
+            "Goiás, GO",
+            "Mato Grosso do Sul, MS",
+            "MInas Gerais, MG",
+            "Espirito Santo, ES",
+            "Rio de Janeiro, RJ",
+            "São Paulo, SP",
+            "Paraná, PR",
+            "Santa Catarina, SC",
+            "Rio Grande do Sul, RS"});
+            this.cbCidade.Location = new System.Drawing.Point(95, 166);
+            this.cbCidade.Name = "cbCidade";
+            this.cbCidade.Size = new System.Drawing.Size(176, 21);
+            this.cbCidade.TabIndex = 33;
+            // 
+            // mtbCEP
+            // 
+            this.mtbCEP.Location = new System.Drawing.Point(678, 93);
+            this.mtbCEP.Mask = "00000-999";
+            this.mtbCEP.Name = "mtbCEP";
+            this.mtbCEP.Size = new System.Drawing.Size(65, 20);
+            this.mtbCEP.TabIndex = 32;
+            // 
+            // mtbCelular
+            // 
+            this.mtbCelular.Location = new System.Drawing.Point(329, 57);
+            this.mtbCelular.Mask = "(99) 9 000-0000";
+            this.mtbCelular.Name = "mtbCelular";
+            this.mtbCelular.Size = new System.Drawing.Size(100, 20);
+            this.mtbCelular.TabIndex = 31;
+            // 
+            // mtbTelefone
+            // 
+            this.mtbTelefone.Location = new System.Drawing.Point(507, 57);
+            this.mtbTelefone.Mask = "(99) 000-0000";
+            this.mtbTelefone.Name = "mtbTelefone";
+            this.mtbTelefone.Size = new System.Drawing.Size(100, 20);
+            this.mtbTelefone.TabIndex = 30;
             // 
             // mtbCPF
             // 
@@ -348,6 +451,11 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblTotalRegistros);
+            this.tabPage2.Controls.Add(this.dgConsultaCliente);
+            this.tabPage2.Controls.Add(this.btnPesquisa);
+            this.tabPage2.Controls.Add(this.txtNomeConsulta);
+            this.tabPage2.Controls.Add(this.lblNomeConsulta);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -356,101 +464,50 @@
             this.tabPage2.Text = "Consulta";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // mtbTelefone
+            // lblNomeConsulta
             // 
-            this.mtbTelefone.Location = new System.Drawing.Point(507, 57);
-            this.mtbTelefone.Mask = "(99) 000-0000";
-            this.mtbTelefone.Name = "mtbTelefone";
-            this.mtbTelefone.Size = new System.Drawing.Size(100, 20);
-            this.mtbTelefone.TabIndex = 30;
+            this.lblNomeConsulta.AutoSize = true;
+            this.lblNomeConsulta.Location = new System.Drawing.Point(18, 26);
+            this.lblNomeConsulta.Name = "lblNomeConsulta";
+            this.lblNomeConsulta.Size = new System.Drawing.Size(38, 13);
+            this.lblNomeConsulta.TabIndex = 0;
+            this.lblNomeConsulta.Text = "Nome:";
             // 
-            // mtbCelular
+            // txtNomeConsulta
             // 
-            this.mtbCelular.Location = new System.Drawing.Point(329, 57);
-            this.mtbCelular.Mask = "(99) 9 000-0000";
-            this.mtbCelular.Name = "mtbCelular";
-            this.mtbCelular.Size = new System.Drawing.Size(100, 20);
-            this.mtbCelular.TabIndex = 31;
+            this.txtNomeConsulta.Location = new System.Drawing.Point(60, 23);
+            this.txtNomeConsulta.Name = "txtNomeConsulta";
+            this.txtNomeConsulta.Size = new System.Drawing.Size(198, 20);
+            this.txtNomeConsulta.TabIndex = 1;
             // 
-            // mtbCEP
+            // btnPesquisa
             // 
-            this.mtbCEP.Location = new System.Drawing.Point(678, 93);
-            this.mtbCEP.Mask = "00000-999";
-            this.mtbCEP.Name = "mtbCEP";
-            this.mtbCEP.Size = new System.Drawing.Size(65, 20);
-            this.mtbCEP.TabIndex = 32;
+            this.btnPesquisa.Location = new System.Drawing.Point(264, 21);
+            this.btnPesquisa.Name = "btnPesquisa";
+            this.btnPesquisa.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisa.TabIndex = 2;
+            this.btnPesquisa.Text = "Pesquisar";
+            this.btnPesquisa.UseVisualStyleBackColor = true;
             // 
-            // cbCidade
+            // dgConsultaCliente
             // 
-            this.cbCidade.FormattingEnabled = true;
-            this.cbCidade.Items.AddRange(new object[] {
-            "Roraima, RR",
-            "Amapá, AP",
-            "Amazonas, AM",
-            "Pará, PA",
-            "Acre, AC",
-            "Rondônia, RO",
-            "Tocantins, TO",
-            "Maranhão, MA",
-            "Piauí, PI",
-            "Ceará, CE ",
-            "Rio Grande do Norte, RN",
-            "Paraíba, PB",
-            "Pernambuco, PE",
-            "Alagoas, AL",
-            "Sergipe, SE",
-            "Bahia, BA",
-            "Mato Grosso, MT",
-            "Distrito Federal, DF",
-            "Goiás, GO",
-            "Mato Grosso do Sul, MS",
-            "MInas Gerais, MG",
-            "Espirito Santo, ES",
-            "Rio de Janeiro, RJ",
-            "São Paulo, SP",
-            "Paraná, PR",
-            "Santa Catarina, SC",
-            "Rio Grande do Sul, RS"});
-            this.cbCidade.Location = new System.Drawing.Point(95, 166);
-            this.cbCidade.Name = "cbCidade";
-            this.cbCidade.Size = new System.Drawing.Size(176, 21);
-            this.cbCidade.TabIndex = 33;
+            this.dgConsultaCliente.AllowUserToAddRows = false;
+            this.dgConsultaCliente.AllowUserToDeleteRows = false;
+            this.dgConsultaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgConsultaCliente.Location = new System.Drawing.Point(17, 72);
+            this.dgConsultaCliente.Name = "dgConsultaCliente";
+            this.dgConsultaCliente.ReadOnly = true;
+            this.dgConsultaCliente.Size = new System.Drawing.Size(756, 217);
+            this.dgConsultaCliente.TabIndex = 3;
             // 
-            // btnNovo
+            // lblTotalRegistros
             // 
-            this.btnNovo.Location = new System.Drawing.Point(219, 236);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(75, 23);
-            this.btnNovo.TabIndex = 34;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.Location = new System.Drawing.Point(300, 236);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 35;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = true;
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Location = new System.Drawing.Point(381, 236);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.btnExcluir.TabIndex = 36;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Location = new System.Drawing.Point(462, 236);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 37;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
+            this.lblTotalRegistros.AutoSize = true;
+            this.lblTotalRegistros.Location = new System.Drawing.Point(586, 47);
+            this.lblTotalRegistros.Name = "lblTotalRegistros";
+            this.lblTotalRegistros.Size = new System.Drawing.Size(96, 13);
+            this.lblTotalRegistros.TabIndex = 4;
+            this.lblTotalRegistros.Text = "Total de Registros:";
             // 
             // frmClientes
             // 
@@ -467,6 +524,9 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgConsultaCliente)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -510,5 +570,10 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.ComboBox cbCidade;
+        private System.Windows.Forms.Label lblTotalRegistros;
+        private System.Windows.Forms.DataGridView dgConsultaCliente;
+        private System.Windows.Forms.Button btnPesquisa;
+        private System.Windows.Forms.TextBox txtNomeConsulta;
+        private System.Windows.Forms.Label lblNomeConsulta;
     }
 }
