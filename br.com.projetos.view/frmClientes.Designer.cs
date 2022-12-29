@@ -68,13 +68,17 @@
             this.lblNomeConsulta = new System.Windows.Forms.Label();
             this.txtNomeConsulta = new System.Windows.Forms.TextBox();
             this.btnPesquisa = new System.Windows.Forms.Button();
-            this.dgConsultaCliente = new System.Windows.Forms.DataGridView();
+            this.dgbLitaClintes = new System.Windows.Forms.DataGridView();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
+            this.btnNovaConsulta = new System.Windows.Forms.Button();
+            this.btnSalvarConsulta = new System.Windows.Forms.Button();
+            this.btnExcluirConsulta = new System.Windows.Forms.Button();
+            this.btnEditarConsulta = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgConsultaCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgbLitaClintes)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -147,7 +151,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(791, 314);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Dados pessoais";
+            this.tabPage1.Text = "Cadastro";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnEditar
@@ -176,6 +180,7 @@
             this.btnSalvar.TabIndex = 35;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnNovo
             // 
@@ -451,8 +456,12 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnEditarConsulta);
+            this.tabPage2.Controls.Add(this.btnExcluirConsulta);
+            this.tabPage2.Controls.Add(this.btnSalvarConsulta);
+            this.tabPage2.Controls.Add(this.btnNovaConsulta);
             this.tabPage2.Controls.Add(this.lblTotalRegistros);
-            this.tabPage2.Controls.Add(this.dgConsultaCliente);
+            this.tabPage2.Controls.Add(this.dgbLitaClintes);
             this.tabPage2.Controls.Add(this.btnPesquisa);
             this.tabPage2.Controls.Add(this.txtNomeConsulta);
             this.tabPage2.Controls.Add(this.lblNomeConsulta);
@@ -489,25 +498,61 @@
             this.btnPesquisa.Text = "Pesquisar";
             this.btnPesquisa.UseVisualStyleBackColor = true;
             // 
-            // dgConsultaCliente
+            // dgbLitaClintes
             // 
-            this.dgConsultaCliente.AllowUserToAddRows = false;
-            this.dgConsultaCliente.AllowUserToDeleteRows = false;
-            this.dgConsultaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgConsultaCliente.Location = new System.Drawing.Point(17, 72);
-            this.dgConsultaCliente.Name = "dgConsultaCliente";
-            this.dgConsultaCliente.ReadOnly = true;
-            this.dgConsultaCliente.Size = new System.Drawing.Size(756, 217);
-            this.dgConsultaCliente.TabIndex = 3;
+            this.dgbLitaClintes.AllowUserToAddRows = false;
+            this.dgbLitaClintes.AllowUserToDeleteRows = false;
+            this.dgbLitaClintes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgbLitaClintes.Location = new System.Drawing.Point(3, 47);
+            this.dgbLitaClintes.Name = "dgbLitaClintes";
+            this.dgbLitaClintes.ReadOnly = true;
+            this.dgbLitaClintes.Size = new System.Drawing.Size(756, 217);
+            this.dgbLitaClintes.TabIndex = 3;
             // 
             // lblTotalRegistros
             // 
             this.lblTotalRegistros.AutoSize = true;
-            this.lblTotalRegistros.Location = new System.Drawing.Point(586, 47);
+            this.lblTotalRegistros.Location = new System.Drawing.Point(573, 31);
             this.lblTotalRegistros.Name = "lblTotalRegistros";
             this.lblTotalRegistros.Size = new System.Drawing.Size(96, 13);
             this.lblTotalRegistros.TabIndex = 4;
             this.lblTotalRegistros.Text = "Total de Registros:";
+            // 
+            // btnNovaConsulta
+            // 
+            this.btnNovaConsulta.Location = new System.Drawing.Point(205, 271);
+            this.btnNovaConsulta.Name = "btnNovaConsulta";
+            this.btnNovaConsulta.Size = new System.Drawing.Size(75, 23);
+            this.btnNovaConsulta.TabIndex = 5;
+            this.btnNovaConsulta.Text = "Novo";
+            this.btnNovaConsulta.UseVisualStyleBackColor = true;
+            // 
+            // btnSalvarConsulta
+            // 
+            this.btnSalvarConsulta.Location = new System.Drawing.Point(284, 271);
+            this.btnSalvarConsulta.Name = "btnSalvarConsulta";
+            this.btnSalvarConsulta.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvarConsulta.TabIndex = 6;
+            this.btnSalvarConsulta.Text = "Salvar";
+            this.btnSalvarConsulta.UseVisualStyleBackColor = true;
+            // 
+            // btnExcluirConsulta
+            // 
+            this.btnExcluirConsulta.Location = new System.Drawing.Point(365, 271);
+            this.btnExcluirConsulta.Name = "btnExcluirConsulta";
+            this.btnExcluirConsulta.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluirConsulta.TabIndex = 7;
+            this.btnExcluirConsulta.Text = "Excluir";
+            this.btnExcluirConsulta.UseVisualStyleBackColor = true;
+            // 
+            // btnEditarConsulta
+            // 
+            this.btnEditarConsulta.Location = new System.Drawing.Point(446, 271);
+            this.btnEditarConsulta.Name = "btnEditarConsulta";
+            this.btnEditarConsulta.Size = new System.Drawing.Size(75, 23);
+            this.btnEditarConsulta.TabIndex = 8;
+            this.btnEditarConsulta.Text = "Editar";
+            this.btnEditarConsulta.UseVisualStyleBackColor = true;
             // 
             // frmClientes
             // 
@@ -526,7 +571,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgConsultaCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgbLitaClintes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -571,9 +616,13 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.ComboBox cbCidade;
         private System.Windows.Forms.Label lblTotalRegistros;
-        private System.Windows.Forms.DataGridView dgConsultaCliente;
+        private System.Windows.Forms.DataGridView dgbLitaClintes;
         private System.Windows.Forms.Button btnPesquisa;
         private System.Windows.Forms.TextBox txtNomeConsulta;
         private System.Windows.Forms.Label lblNomeConsulta;
+        private System.Windows.Forms.Button btnEditarConsulta;
+        private System.Windows.Forms.Button btnExcluirConsulta;
+        private System.Windows.Forms.Button btnSalvarConsulta;
+        private System.Windows.Forms.Button btnNovaConsulta;
     }
 }
