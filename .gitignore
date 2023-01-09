@@ -1,0 +1,6 @@
+*.vsidx
+*../../.vsidx
+ProjetosControle De Vendas.csproj
+*.exe
+*.pdb
+*.exe.config

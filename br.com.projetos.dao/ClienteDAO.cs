@@ -1,8 +1,10 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.SqlServer.Server;
+using MySql.Data.MySqlClient;
 using ProjetosControle_De_Vendas.br.com.projetos.conexao;
 using ProjetosControle_De_Vendas.br.com.projetos.model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +32,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.dao
             {
                 // 1 passo - define the cmd sql = insert into
                 string cmdSql = @"insert into tb_clientes (nome,rg,cpf,email,telefone,celular,endereco,numero,complemento,bairro,cidade,estado)
-values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@bairro,@cidade,@estado");
+values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@bairro,@cidade,@estado)";
 
                 //2 passo - Transcribe the commands of SQL to CSharp
                 MySqlCommand sqlCmd = new MySqlCommand(cmdSql, connection);
@@ -48,20 +50,48 @@ values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@
                 sqlCmd.Parameters.AddWithValue("@estado", obj.Estado);
 
                 // 3 passo - Opening the connection and execulte the command SQL
-                connection.Open();
+                this.connection.Open();
 
-                string resp = sqlCmd.ExecuteNonQuery() == 1 ? "O cliente foi cadastrado com sucesso" : "O cleinte não foi cadastrado"; 
+                sqlCmd.ExecuteNonQuery(); 
+
+                MessageBox.Show($"O cliente {obj.Nome} Foi cadastrado com sucesso!");
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Aconteceu um erro! Erro do tipo: {ex.Message} com o caminho: {ex.Message}");
-            }
-            finally
-            {
-
+                MessageBox.Show($"Aconteceu um erro! Erro do tipo: {ex.Message} com o caminho: {ex.StackTrace}");
             }
         }
         #endregion
+
+        #region ConsultarClientes
+        public DataTable ConsultaClientes()
+        {
+            try
+            {
+                // 1 passo - Cirar oDataTable e o comando SQL
+                DataTable tabelaCliente = new DataTable();
+                string sql = "SELECT * FROM bdvendas.tb_clientes;";
+
+                //2 passo - Organizar o comando e executar
+                MySqlCommand cmdSql = new MySqlCommand(sql,connection);
+
+                // 3 passo - Abertura da connection
+                connection.Open();
+
+                // 4 passo - Criar uma  MySqlDataApter para preencher os datos no DataTable
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql); 
+                DA.Fill(tabelaCliente);
+                return tabelaCliente;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro: {ex.StackTrace}");
+                return null;
+            }
+        }
+
+        #endregion
     }
-    
+
 }

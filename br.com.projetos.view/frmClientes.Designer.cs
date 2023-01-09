@@ -36,15 +36,15 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.cbCidade = new System.Windows.Forms.ComboBox();
+            this.cbEstado = new System.Windows.Forms.ComboBox();
             this.mtbCEP = new System.Windows.Forms.MaskedTextBox();
             this.mtbCelular = new System.Windows.Forms.MaskedTextBox();
             this.mtbTelefone = new System.Windows.Forms.MaskedTextBox();
             this.mtbCPF = new System.Windows.Forms.MaskedTextBox();
             this.mtbRG = new System.Windows.Forms.MaskedTextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.lblEstado = new System.Windows.Forms.Label();
+            this.txtCidade = new System.Windows.Forms.TextBox();
             this.lblCidade = new System.Windows.Forms.Label();
+            this.lblEstado = new System.Windows.Forms.Label();
             this.lblCEP = new System.Windows.Forms.Label();
             this.txtBarro = new System.Windows.Forms.TextBox();
             this.lblBairro = new System.Windows.Forms.Label();
@@ -65,15 +65,15 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lblNomeConsulta = new System.Windows.Forms.Label();
-            this.txtNomeConsulta = new System.Windows.Forms.TextBox();
-            this.btnPesquisa = new System.Windows.Forms.Button();
-            this.dgbLitaClintes = new System.Windows.Forms.DataGridView();
-            this.lblTotalRegistros = new System.Windows.Forms.Label();
-            this.btnNovaConsulta = new System.Windows.Forms.Button();
-            this.btnSalvarConsulta = new System.Windows.Forms.Button();
-            this.btnExcluirConsulta = new System.Windows.Forms.Button();
             this.btnEditarConsulta = new System.Windows.Forms.Button();
+            this.btnExcluirConsulta = new System.Windows.Forms.Button();
+            this.btnSalvarConsulta = new System.Windows.Forms.Button();
+            this.btnNovaConsulta = new System.Windows.Forms.Button();
+            this.lblTotalRegistros = new System.Windows.Forms.Label();
+            this.dgbLitaClintes = new System.Windows.Forms.DataGridView();
+            this.btnPesquisa = new System.Windows.Forms.Button();
+            this.txtNomeConsulta = new System.Windows.Forms.TextBox();
+            this.lblNomeConsulta = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -118,15 +118,15 @@
             this.tabPage1.Controls.Add(this.btnExcluir);
             this.tabPage1.Controls.Add(this.btnSalvar);
             this.tabPage1.Controls.Add(this.btnNovo);
-            this.tabPage1.Controls.Add(this.cbCidade);
+            this.tabPage1.Controls.Add(this.cbEstado);
             this.tabPage1.Controls.Add(this.mtbCEP);
             this.tabPage1.Controls.Add(this.mtbCelular);
             this.tabPage1.Controls.Add(this.mtbTelefone);
             this.tabPage1.Controls.Add(this.mtbCPF);
             this.tabPage1.Controls.Add(this.mtbRG);
-            this.tabPage1.Controls.Add(this.textBox3);
-            this.tabPage1.Controls.Add(this.lblEstado);
+            this.tabPage1.Controls.Add(this.txtCidade);
             this.tabPage1.Controls.Add(this.lblCidade);
+            this.tabPage1.Controls.Add(this.lblEstado);
             this.tabPage1.Controls.Add(this.lblCEP);
             this.tabPage1.Controls.Add(this.txtBarro);
             this.tabPage1.Controls.Add(this.lblBairro);
@@ -191,10 +191,10 @@
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
             // 
-            // cbCidade
+            // cbEstado
             // 
-            this.cbCidade.FormattingEnabled = true;
-            this.cbCidade.Items.AddRange(new object[] {
+            this.cbEstado.FormattingEnabled = true;
+            this.cbEstado.Items.AddRange(new object[] {
             "Roraima, RR",
             "Amapá, AP",
             "Amazonas, AM",
@@ -218,14 +218,14 @@
             "MInas Gerais, MG",
             "Espirito Santo, ES",
             "Rio de Janeiro, RJ",
-            "São Paulo, SP",
+            "SP",
             "Paraná, PR",
             "Santa Catarina, SC",
             "Rio Grande do Sul, RS"});
-            this.cbCidade.Location = new System.Drawing.Point(95, 166);
-            this.cbCidade.Name = "cbCidade";
-            this.cbCidade.Size = new System.Drawing.Size(176, 21);
-            this.cbCidade.TabIndex = 33;
+            this.cbEstado.Location = new System.Drawing.Point(95, 166);
+            this.cbEstado.Name = "cbEstado";
+            this.cbEstado.Size = new System.Drawing.Size(176, 21);
+            this.cbEstado.TabIndex = 33;
             // 
             // mtbCEP
             // 
@@ -238,7 +238,7 @@
             // mtbCelular
             // 
             this.mtbCelular.Location = new System.Drawing.Point(329, 57);
-            this.mtbCelular.Mask = "(99) 9 000-0000";
+            this.mtbCelular.Mask = "(99) 9 000-00000";
             this.mtbCelular.Name = "mtbCelular";
             this.mtbCelular.Size = new System.Drawing.Size(100, 20);
             this.mtbCelular.TabIndex = 31;
@@ -267,31 +267,31 @@
             this.mtbRG.Size = new System.Drawing.Size(78, 20);
             this.mtbRG.TabIndex = 28;
             // 
-            // textBox3
+            // txtCidade
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.textBox3.Location = new System.Drawing.Point(313, 168);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(255, 20);
-            this.textBox3.TabIndex = 27;
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(273, 171);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(43, 13);
-            this.lblEstado.TabIndex = 26;
-            this.lblEstado.Text = "Estado:";
+            this.txtCidade.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.txtCidade.Location = new System.Drawing.Point(313, 168);
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(255, 20);
+            this.txtCidade.TabIndex = 27;
             // 
             // lblCidade
             // 
             this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(47, 171);
+            this.lblCidade.Location = new System.Drawing.Point(273, 171);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(43, 13);
-            this.lblCidade.TabIndex = 24;
+            this.lblCidade.TabIndex = 26;
             this.lblCidade.Text = "Cidade:";
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Location = new System.Drawing.Point(47, 171);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(43, 13);
+            this.lblEstado.TabIndex = 24;
+            this.lblEstado.Text = "Estado:";
             // 
             // lblCEP
             // 
@@ -473,30 +473,50 @@
             this.tabPage2.Text = "Consulta";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // lblNomeConsulta
+            // btnEditarConsulta
             // 
-            this.lblNomeConsulta.AutoSize = true;
-            this.lblNomeConsulta.Location = new System.Drawing.Point(18, 26);
-            this.lblNomeConsulta.Name = "lblNomeConsulta";
-            this.lblNomeConsulta.Size = new System.Drawing.Size(38, 13);
-            this.lblNomeConsulta.TabIndex = 0;
-            this.lblNomeConsulta.Text = "Nome:";
+            this.btnEditarConsulta.Location = new System.Drawing.Point(446, 271);
+            this.btnEditarConsulta.Name = "btnEditarConsulta";
+            this.btnEditarConsulta.Size = new System.Drawing.Size(75, 23);
+            this.btnEditarConsulta.TabIndex = 8;
+            this.btnEditarConsulta.Text = "Editar";
+            this.btnEditarConsulta.UseVisualStyleBackColor = true;
             // 
-            // txtNomeConsulta
+            // btnExcluirConsulta
             // 
-            this.txtNomeConsulta.Location = new System.Drawing.Point(60, 23);
-            this.txtNomeConsulta.Name = "txtNomeConsulta";
-            this.txtNomeConsulta.Size = new System.Drawing.Size(198, 20);
-            this.txtNomeConsulta.TabIndex = 1;
+            this.btnExcluirConsulta.Location = new System.Drawing.Point(365, 271);
+            this.btnExcluirConsulta.Name = "btnExcluirConsulta";
+            this.btnExcluirConsulta.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluirConsulta.TabIndex = 7;
+            this.btnExcluirConsulta.Text = "Excluir";
+            this.btnExcluirConsulta.UseVisualStyleBackColor = true;
             // 
-            // btnPesquisa
+            // btnSalvarConsulta
             // 
-            this.btnPesquisa.Location = new System.Drawing.Point(264, 21);
-            this.btnPesquisa.Name = "btnPesquisa";
-            this.btnPesquisa.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisa.TabIndex = 2;
-            this.btnPesquisa.Text = "Pesquisar";
-            this.btnPesquisa.UseVisualStyleBackColor = true;
+            this.btnSalvarConsulta.Location = new System.Drawing.Point(284, 271);
+            this.btnSalvarConsulta.Name = "btnSalvarConsulta";
+            this.btnSalvarConsulta.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvarConsulta.TabIndex = 6;
+            this.btnSalvarConsulta.Text = "Salvar";
+            this.btnSalvarConsulta.UseVisualStyleBackColor = true;
+            // 
+            // btnNovaConsulta
+            // 
+            this.btnNovaConsulta.Location = new System.Drawing.Point(205, 271);
+            this.btnNovaConsulta.Name = "btnNovaConsulta";
+            this.btnNovaConsulta.Size = new System.Drawing.Size(75, 23);
+            this.btnNovaConsulta.TabIndex = 5;
+            this.btnNovaConsulta.Text = "Novo";
+            this.btnNovaConsulta.UseVisualStyleBackColor = true;
+            // 
+            // lblTotalRegistros
+            // 
+            this.lblTotalRegistros.AutoSize = true;
+            this.lblTotalRegistros.Location = new System.Drawing.Point(573, 31);
+            this.lblTotalRegistros.Name = "lblTotalRegistros";
+            this.lblTotalRegistros.Size = new System.Drawing.Size(96, 13);
+            this.lblTotalRegistros.TabIndex = 4;
+            this.lblTotalRegistros.Text = "Total de Registros:";
             // 
             // dgbLitaClintes
             // 
@@ -509,50 +529,30 @@
             this.dgbLitaClintes.Size = new System.Drawing.Size(756, 217);
             this.dgbLitaClintes.TabIndex = 3;
             // 
-            // lblTotalRegistros
+            // btnPesquisa
             // 
-            this.lblTotalRegistros.AutoSize = true;
-            this.lblTotalRegistros.Location = new System.Drawing.Point(573, 31);
-            this.lblTotalRegistros.Name = "lblTotalRegistros";
-            this.lblTotalRegistros.Size = new System.Drawing.Size(96, 13);
-            this.lblTotalRegistros.TabIndex = 4;
-            this.lblTotalRegistros.Text = "Total de Registros:";
+            this.btnPesquisa.Location = new System.Drawing.Point(264, 21);
+            this.btnPesquisa.Name = "btnPesquisa";
+            this.btnPesquisa.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisa.TabIndex = 2;
+            this.btnPesquisa.Text = "Pesquisar";
+            this.btnPesquisa.UseVisualStyleBackColor = true;
             // 
-            // btnNovaConsulta
+            // txtNomeConsulta
             // 
-            this.btnNovaConsulta.Location = new System.Drawing.Point(205, 271);
-            this.btnNovaConsulta.Name = "btnNovaConsulta";
-            this.btnNovaConsulta.Size = new System.Drawing.Size(75, 23);
-            this.btnNovaConsulta.TabIndex = 5;
-            this.btnNovaConsulta.Text = "Novo";
-            this.btnNovaConsulta.UseVisualStyleBackColor = true;
+            this.txtNomeConsulta.Location = new System.Drawing.Point(60, 23);
+            this.txtNomeConsulta.Name = "txtNomeConsulta";
+            this.txtNomeConsulta.Size = new System.Drawing.Size(198, 20);
+            this.txtNomeConsulta.TabIndex = 1;
             // 
-            // btnSalvarConsulta
+            // lblNomeConsulta
             // 
-            this.btnSalvarConsulta.Location = new System.Drawing.Point(284, 271);
-            this.btnSalvarConsulta.Name = "btnSalvarConsulta";
-            this.btnSalvarConsulta.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvarConsulta.TabIndex = 6;
-            this.btnSalvarConsulta.Text = "Salvar";
-            this.btnSalvarConsulta.UseVisualStyleBackColor = true;
-            // 
-            // btnExcluirConsulta
-            // 
-            this.btnExcluirConsulta.Location = new System.Drawing.Point(365, 271);
-            this.btnExcluirConsulta.Name = "btnExcluirConsulta";
-            this.btnExcluirConsulta.Size = new System.Drawing.Size(75, 23);
-            this.btnExcluirConsulta.TabIndex = 7;
-            this.btnExcluirConsulta.Text = "Excluir";
-            this.btnExcluirConsulta.UseVisualStyleBackColor = true;
-            // 
-            // btnEditarConsulta
-            // 
-            this.btnEditarConsulta.Location = new System.Drawing.Point(446, 271);
-            this.btnEditarConsulta.Name = "btnEditarConsulta";
-            this.btnEditarConsulta.Size = new System.Drawing.Size(75, 23);
-            this.btnEditarConsulta.TabIndex = 8;
-            this.btnEditarConsulta.Text = "Editar";
-            this.btnEditarConsulta.UseVisualStyleBackColor = true;
+            this.lblNomeConsulta.AutoSize = true;
+            this.lblNomeConsulta.Location = new System.Drawing.Point(18, 26);
+            this.lblNomeConsulta.Name = "lblNomeConsulta";
+            this.lblNomeConsulta.Size = new System.Drawing.Size(38, 13);
+            this.lblNomeConsulta.TabIndex = 0;
+            this.lblNomeConsulta.Text = "Nome:";
             // 
             // frmClientes
             // 
@@ -603,9 +603,9 @@
         private System.Windows.Forms.Label lblBairro;
         private System.Windows.Forms.MaskedTextBox mtbCPF;
         private System.Windows.Forms.MaskedTextBox mtbRG;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.Label lblCidade;
+        private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.Label lblCEP;
         private System.Windows.Forms.MaskedTextBox mtbCEP;
         private System.Windows.Forms.MaskedTextBox mtbCelular;
@@ -614,7 +614,7 @@
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.ComboBox cbCidade;
+        private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.Label lblTotalRegistros;
         private System.Windows.Forms.DataGridView dgbLitaClintes;
         private System.Windows.Forms.Button btnPesquisa;
