@@ -9,6 +9,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.model
 {
     public class Clientes
     {
+        #region Atributos do clientes
         public int Codigo { get; set; }
         public string Nome { get; set; }
         public string RG { get; set; }
@@ -23,5 +24,6 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.model
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
+        #endregion
     }
 }
