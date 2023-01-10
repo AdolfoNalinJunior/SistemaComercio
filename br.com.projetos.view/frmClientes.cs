@@ -50,5 +50,11 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             clienteDao.CadastrarCliente(cliente);
         }
         #endregion
+
+        private void frmClientes_Load(object sender, EventArgs e)
+        {
+            ClienteDAO dao = new ClienteDAO();
+            dgLitaClintes.DataSource = dao.ConsultarClientes();
+        }
     }
 }
