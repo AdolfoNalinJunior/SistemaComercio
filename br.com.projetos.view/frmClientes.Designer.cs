@@ -46,7 +46,7 @@
             this.lblCidade = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
             this.lblCEP = new System.Windows.Forms.Label();
-            this.txtBarro = new System.Windows.Forms.TextBox();
+            this.txtBairro = new System.Windows.Forms.TextBox();
             this.lblBairro = new System.Windows.Forms.Label();
             this.txtComplemento = new System.Windows.Forms.TextBox();
             this.lblComplemento = new System.Windows.Forms.Label();
@@ -70,7 +70,7 @@
             this.btnSalvarConsulta = new System.Windows.Forms.Button();
             this.btnNovaConsulta = new System.Windows.Forms.Button();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
-            this.dgLitaClintes = new System.Windows.Forms.DataGridView();
+            this.dgListaClientes = new System.Windows.Forms.DataGridView();
             this.btnPesquisa = new System.Windows.Forms.Button();
             this.txtNomeConsulta = new System.Windows.Forms.TextBox();
             this.lblNomeConsulta = new System.Windows.Forms.Label();
@@ -78,7 +78,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgLitaClintes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgListaClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -128,7 +128,7 @@
             this.tabPage1.Controls.Add(this.lblCidade);
             this.tabPage1.Controls.Add(this.lblEstado);
             this.tabPage1.Controls.Add(this.lblCEP);
-            this.tabPage1.Controls.Add(this.txtBarro);
+            this.tabPage1.Controls.Add(this.txtBairro);
             this.tabPage1.Controls.Add(this.lblBairro);
             this.tabPage1.Controls.Add(this.txtComplemento);
             this.tabPage1.Controls.Add(this.lblComplemento);
@@ -302,22 +302,22 @@
             this.lblCEP.TabIndex = 22;
             this.lblCEP.Text = "CEP:";
             // 
-            // txtBarro
+            // txtBairro
             // 
-            this.txtBarro.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.txtBarro.Location = new System.Drawing.Point(607, 168);
-            this.txtBarro.Name = "txtBarro";
-            this.txtBarro.Size = new System.Drawing.Size(160, 20);
-            this.txtBarro.TabIndex = 21;
+            this.txtBairro.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.txtBairro.Location = new System.Drawing.Point(607, 168);
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Size = new System.Drawing.Size(160, 20);
+            this.txtBairro.TabIndex = 21;
             // 
             // lblBairro
             // 
             this.lblBairro.AutoSize = true;
             this.lblBairro.Location = new System.Drawing.Point(574, 171);
             this.lblBairro.Name = "lblBairro";
-            this.lblBairro.Size = new System.Drawing.Size(35, 13);
+            this.lblBairro.Size = new System.Drawing.Size(37, 13);
             this.lblBairro.TabIndex = 20;
-            this.lblBairro.Text = "Barro:";
+            this.lblBairro.Text = "Bairro:";
             // 
             // txtComplemento
             // 
@@ -461,7 +461,7 @@
             this.tabPage2.Controls.Add(this.btnSalvarConsulta);
             this.tabPage2.Controls.Add(this.btnNovaConsulta);
             this.tabPage2.Controls.Add(this.lblTotalRegistros);
-            this.tabPage2.Controls.Add(this.dgLitaClintes);
+            this.tabPage2.Controls.Add(this.dgListaClientes);
             this.tabPage2.Controls.Add(this.btnPesquisa);
             this.tabPage2.Controls.Add(this.txtNomeConsulta);
             this.tabPage2.Controls.Add(this.lblNomeConsulta);
@@ -518,16 +518,17 @@
             this.lblTotalRegistros.TabIndex = 4;
             this.lblTotalRegistros.Text = "Total de Registros:";
             // 
-            // dgLitaClintes
+            // dgListaClientes
             // 
-            this.dgLitaClintes.AllowUserToAddRows = false;
-            this.dgLitaClintes.AllowUserToDeleteRows = false;
-            this.dgLitaClintes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgLitaClintes.Location = new System.Drawing.Point(3, 47);
-            this.dgLitaClintes.Name = "dgLitaClintes";
-            this.dgLitaClintes.ReadOnly = true;
-            this.dgLitaClintes.Size = new System.Drawing.Size(756, 217);
-            this.dgLitaClintes.TabIndex = 3;
+            this.dgListaClientes.AllowUserToAddRows = false;
+            this.dgListaClientes.AllowUserToDeleteRows = false;
+            this.dgListaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgListaClientes.Location = new System.Drawing.Point(3, 47);
+            this.dgListaClientes.Name = "dgListaClientes";
+            this.dgListaClientes.ReadOnly = true;
+            this.dgListaClientes.Size = new System.Drawing.Size(756, 217);
+            this.dgListaClientes.TabIndex = 3;
+            this.dgListaClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgListaClintes_CellClick);
             // 
             // btnPesquisa
             // 
@@ -572,7 +573,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgLitaClintes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgListaClientes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -600,7 +601,7 @@
         private System.Windows.Forms.Label lblCelular;
         private System.Windows.Forms.TextBox txtComplemento;
         private System.Windows.Forms.Label lblComplemento;
-        private System.Windows.Forms.TextBox txtBarro;
+        private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.Label lblBairro;
         private System.Windows.Forms.MaskedTextBox mtbCPF;
         private System.Windows.Forms.MaskedTextBox mtbRG;
@@ -617,7 +618,7 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.Label lblTotalRegistros;
-        private System.Windows.Forms.DataGridView dgLitaClintes;
+        private System.Windows.Forms.DataGridView dgListaClientes;
         private System.Windows.Forms.Button btnPesquisa;
         private System.Windows.Forms.TextBox txtNomeConsulta;
         private System.Windows.Forms.Label lblNomeConsulta;
