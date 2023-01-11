@@ -40,7 +40,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             cliente.CEP = mtbCEP.Text;
             cliente.Endereco = txtEndereco.Text;
             cliente.Numero = int.Parse(txtNumero.Text);
-            cliente.Bairro = txtBarro.Text;
+            cliente.Bairro = txtBairro.Text;
             cliente.Complemento = txtComplemento.Text;
             cliente.Cidade = txtCidade.Text;
             cliente.Estado = cbEstado.Text; 
@@ -54,7 +54,28 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         private void frmClientes_Load(object sender, EventArgs e)
         {
             ClienteDAO dao = new ClienteDAO();
-            dgLitaClintes.DataSource = dao.ConsultarClientes();
+            dgListaClientes.DataSource = dao.ConsultarClientes();
         }
+
+        #region
+        private void dgListaClintes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 1 passo - Pegar os dados da linha selecionada
+            txtCodigo.Text = dgListaClientes.CurrentRow.Cells[0].Value.ToString();
+            txtNome.Text = dgListaClientes.CurrentRow.Cells[1].Value.ToString();
+            mtbRG.Text = dgListaClientes.CurrentRow.Cells[2].Value.ToString();
+            mtbCPF.Text = dgListaClientes.CurrentRow.Cells[3].Value.ToString();
+            txtEmail.Text = dgListaClientes.CurrentRow.Cells[4].Value.ToString();
+            mtbTelefone.Text = dgListaClientes.CurrentRow.Cells[5].Value.ToString();
+            mtbCelular.Text = dgListaClientes.CurrentRow.Cells[6].Value.ToString();
+            mtbCEP.Text = dgListaClientes.CurrentRow.Cells[7].Value.ToString();
+            txtEndereco.Text = dgListaClientes.CurrentRow.Cells[8].Value.ToString();
+            txtNumero.Text = dgListaClientes.CurrentRow.Cells[9].Value.ToString();
+            txtComplemento.Text = dgListaClientes.CurrentRow.Cells[10].Value.ToString();
+            txtBairro.Text = dgListaClientes.CurrentRow.Cells[11].Value.ToString();
+            txtCidade.Text = dgListaClientes.CurrentRow.Cells[12].Value.ToString();
+            cbEstado.Text = dgListaClientes.CurrentRow.Cells[13].Value.ToString();
+        }   
+        #endregion
     }
 }

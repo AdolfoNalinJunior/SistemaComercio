@@ -70,7 +70,7 @@
             this.btnSalvarConsulta = new System.Windows.Forms.Button();
             this.btnNovaConsulta = new System.Windows.Forms.Button();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
-            this.dgbLitaClintes = new System.Windows.Forms.DataGridView();
+            this.dgLitaClintes = new System.Windows.Forms.DataGridView();
             this.btnPesquisa = new System.Windows.Forms.Button();
             this.txtNomeConsulta = new System.Windows.Forms.TextBox();
             this.lblNomeConsulta = new System.Windows.Forms.Label();
@@ -78,7 +78,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgbLitaClintes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgLitaClintes)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -195,33 +195,33 @@
             // 
             this.cbEstado.FormattingEnabled = true;
             this.cbEstado.Items.AddRange(new object[] {
-            "Roraima, RR",
-            "Amapá, AP",
-            "Amazonas, AM",
-            "Pará, PA",
-            "Acre, AC",
-            "Rondônia, RO",
-            "Tocantins, TO",
-            "Maranhão, MA",
-            "Piauí, PI",
-            "Ceará, CE ",
-            "Rio Grande do Norte, RN",
-            "Paraíba, PB",
-            "Pernambuco, PE",
-            "Alagoas, AL",
-            "Sergipe, SE",
-            "Bahia, BA",
-            "Mato Grosso, MT",
-            "Distrito Federal, DF",
-            "Goiás, GO",
-            "Mato Grosso do Sul, MS",
-            "MInas Gerais, MG",
-            "Espirito Santo, ES",
-            "Rio de Janeiro, RJ",
+            "RR",
+            "AP",
+            "AM",
+            "PA",
+            "AC",
+            "RO",
+            "TO",
+            "MA",
+            "PI",
+            "CE ",
+            "RN",
+            "PB",
+            "PE",
+            "AL",
+            "SE",
+            "BA",
+            "MT",
+            "DF",
+            "GO",
+            "MS",
+            "MG",
+            "ES",
+            "RJ",
             "SP",
-            "Paraná, PR",
-            "Santa Catarina, SC",
-            "Rio Grande do Sul, RS"});
+            "PR",
+            "SC",
+            "RS"});
             this.cbEstado.Location = new System.Drawing.Point(95, 166);
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(176, 21);
@@ -246,7 +246,7 @@
             // mtbTelefone
             // 
             this.mtbTelefone.Location = new System.Drawing.Point(507, 57);
-            this.mtbTelefone.Mask = "(99) 000-0000";
+            this.mtbTelefone.Mask = "(99) 0000-0000";
             this.mtbTelefone.Name = "mtbTelefone";
             this.mtbTelefone.Size = new System.Drawing.Size(100, 20);
             this.mtbTelefone.TabIndex = 30;
@@ -461,7 +461,7 @@
             this.tabPage2.Controls.Add(this.btnSalvarConsulta);
             this.tabPage2.Controls.Add(this.btnNovaConsulta);
             this.tabPage2.Controls.Add(this.lblTotalRegistros);
-            this.tabPage2.Controls.Add(this.dgbLitaClintes);
+            this.tabPage2.Controls.Add(this.dgLitaClintes);
             this.tabPage2.Controls.Add(this.btnPesquisa);
             this.tabPage2.Controls.Add(this.txtNomeConsulta);
             this.tabPage2.Controls.Add(this.lblNomeConsulta);
@@ -518,16 +518,16 @@
             this.lblTotalRegistros.TabIndex = 4;
             this.lblTotalRegistros.Text = "Total de Registros:";
             // 
-            // dgbLitaClintes
+            // dgLitaClintes
             // 
-            this.dgbLitaClintes.AllowUserToAddRows = false;
-            this.dgbLitaClintes.AllowUserToDeleteRows = false;
-            this.dgbLitaClintes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgbLitaClintes.Location = new System.Drawing.Point(3, 47);
-            this.dgbLitaClintes.Name = "dgbLitaClintes";
-            this.dgbLitaClintes.ReadOnly = true;
-            this.dgbLitaClintes.Size = new System.Drawing.Size(756, 217);
-            this.dgbLitaClintes.TabIndex = 3;
+            this.dgLitaClintes.AllowUserToAddRows = false;
+            this.dgLitaClintes.AllowUserToDeleteRows = false;
+            this.dgLitaClintes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgLitaClintes.Location = new System.Drawing.Point(3, 47);
+            this.dgLitaClintes.Name = "dgLitaClintes";
+            this.dgLitaClintes.ReadOnly = true;
+            this.dgLitaClintes.Size = new System.Drawing.Size(756, 217);
+            this.dgLitaClintes.TabIndex = 3;
             // 
             // btnPesquisa
             // 
@@ -564,6 +564,7 @@
             this.Name = "frmClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Clientes";
+            this.Load += new System.EventHandler(this.frmClientes_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -571,7 +572,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgbLitaClintes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgLitaClintes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -616,7 +617,7 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.Label lblTotalRegistros;
-        private System.Windows.Forms.DataGridView dgbLitaClintes;
+        private System.Windows.Forms.DataGridView dgLitaClintes;
         private System.Windows.Forms.Button btnPesquisa;
         private System.Windows.Forms.TextBox txtNomeConsulta;
         private System.Windows.Forms.Label lblNomeConsulta;
