@@ -94,7 +94,6 @@ values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@
                 return null;
             }
         }
-
         #endregion
 
         #region EditarCliente
@@ -104,7 +103,7 @@ values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@
             try
             {
 
-                string sqlcmd = @"update db.vendas.tb.clientes set nome=@nome,rg=@rg,cpf=@cpf,email=@email,telefone=@telefone,celular=@celular,cep=@cep,endereco=@endereco,numero=@numero,
+                string sqlcmd = @"update dbvendas.tb.clientes set nome=@nome,rg=@rg,cpf=@cpf,email=@email,telefone=@telefone,celular=@celular,cep=@cep,endereco=@endereco,numero=@numero,
 complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado
 where id=@id";
                 MySqlCommand cmdSql = new MySqlCommand(sqlcmd,connection);
@@ -137,11 +136,11 @@ where id=@id";
 
         #region ExcluirClientes
 
-        public void ExcluirCleinte(Clientes cliente)
+        public void ExcluirClientes(Clientes cliente)
         {
             try
             {
-                string cmdSql = "delete from db.vendas.tb.clietes where id=@id";
+                string cmdSql = "delete from bdvendas.tb_clientes where id=@id";
 
                 MySqlCommand sqlCmd = new MySqlCommand(cmdSql,connection);
                 sqlCmd.Parameters.AddWithValue("@id",cliente.Codigo);
@@ -156,7 +155,6 @@ where id=@id";
                 MessageBox.Show($"A exclusão do cliente {cliente.Nome} não foi bem sucedida, mensagem de erro: {ex.Message}, Caminho: {ex.StackTrace}");
             }
         }
-
         #endregion
     }
 
