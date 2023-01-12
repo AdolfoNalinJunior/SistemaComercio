@@ -30,6 +30,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         {
             // 1 passo - Receber os dados dentro so objeto modelo de cliente
             Clientes cliente = new Clientes();
+            ClienteDAO objDao = new ClienteDAO();
 
             cliente.Nome = txtNome.Text;
             cliente.RG = mtbRG.Text;
@@ -48,18 +49,23 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             // 2 passo - Criar um objeto da classe ClienteDAO
             ClienteDAO clienteDao = new ClienteDAO();
             clienteDao.CadastrarCliente(cliente);
+
+            dgListaClientes.DataSource = objDao.ConsultarClientes();
         }
         #endregion
 
+        #region LoadClientes
         private void frmClientes_Load(object sender, EventArgs e)
         {
             ClienteDAO dao = new ClienteDAO();
             dgListaClientes.DataSource = dao.ConsultarClientes();
         }
+        #endregion
 
-        #region
+        #region EditarClientes
         private void dgListaClintes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            ClienteDAO objDao = new ClienteDAO();
             // 1 passo - Pegar os dados da linha selecionada
             txtCodigo.Text = dgListaClientes.CurrentRow.Cells[0].Value.ToString();
             txtNome.Text = dgListaClientes.CurrentRow.Cells[1].Value.ToString();
@@ -75,7 +81,29 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             txtBairro.Text = dgListaClientes.CurrentRow.Cells[11].Value.ToString();
             txtCidade.Text = dgListaClientes.CurrentRow.Cells[12].Value.ToString();
             cbEstado.Text = dgListaClientes.CurrentRow.Cells[13].Value.ToString();
-        }   
+
+            // 2 passo - Alterar para gui Dados pessoais
+            tabControl1.SelectedTab = tabCadastroClientes;
+            dgListaClientes.DataSource = objDao.ConsultarClientes();
+        }
+        #endregion
+
+        #region BotaoExcluir
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            // botão de excluir 
+            Clientes obj = new Clientes();
+
+            // Passando o valor do Codigo para o codigo do cliente
+            obj.Codigo = int.Parse(txtCodigo.Text);
+
+            // Realizando a Exclusãos do cliente
+            ClienteDAO objDao = new ClienteDAO();
+            objDao.ExcluirClientes(obj);
+
+            // Atualizar após a deleção
+            dgListaClientes.DataSource = objDao.ConsultarClientes();
+        }
         #endregion
     }
 }

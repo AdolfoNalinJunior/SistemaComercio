@@ -31,7 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTituloCadastroCliente = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabCadastroClientes = new System.Windows.Forms.TabPage();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
@@ -64,7 +64,7 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabConsultaClientes = new System.Windows.Forms.TabPage();
             this.btnEditarConsulta = new System.Windows.Forms.Button();
             this.btnExcluirConsulta = new System.Windows.Forms.Button();
             this.btnSalvarConsulta = new System.Windows.Forms.Button();
@@ -76,8 +76,8 @@
             this.lblNomeConsulta = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabCadastroClientes.SuspendLayout();
+            this.tabConsultaClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgListaClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,55 +104,55 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabCadastroClientes);
+            this.tabControl1.Controls.Add(this.tabConsultaClientes);
             this.tabControl1.Location = new System.Drawing.Point(0, 110);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(799, 340);
             this.tabControl1.TabIndex = 1;
             // 
-            // tabPage1
+            // tabCadastroClientes
             // 
-            this.tabPage1.Controls.Add(this.btnEditar);
-            this.tabPage1.Controls.Add(this.btnExcluir);
-            this.tabPage1.Controls.Add(this.btnSalvar);
-            this.tabPage1.Controls.Add(this.btnNovo);
-            this.tabPage1.Controls.Add(this.cbEstado);
-            this.tabPage1.Controls.Add(this.mtbCEP);
-            this.tabPage1.Controls.Add(this.mtbCelular);
-            this.tabPage1.Controls.Add(this.mtbTelefone);
-            this.tabPage1.Controls.Add(this.mtbCPF);
-            this.tabPage1.Controls.Add(this.mtbRG);
-            this.tabPage1.Controls.Add(this.txtCidade);
-            this.tabPage1.Controls.Add(this.lblCidade);
-            this.tabPage1.Controls.Add(this.lblEstado);
-            this.tabPage1.Controls.Add(this.lblCEP);
-            this.tabPage1.Controls.Add(this.txtBairro);
-            this.tabPage1.Controls.Add(this.lblBairro);
-            this.tabPage1.Controls.Add(this.txtComplemento);
-            this.tabPage1.Controls.Add(this.lblComplemento);
-            this.tabPage1.Controls.Add(this.txtNumero);
-            this.tabPage1.Controls.Add(this.lblNumero);
-            this.tabPage1.Controls.Add(this.txtEndereco);
-            this.tabPage1.Controls.Add(this.lblEndereco);
-            this.tabPage1.Controls.Add(this.lblCelular);
-            this.tabPage1.Controls.Add(this.lblTelefone);
-            this.tabPage1.Controls.Add(this.txtEmail);
-            this.tabPage1.Controls.Add(this.lblEmail);
-            this.tabPage1.Controls.Add(this.lblCPF);
-            this.tabPage1.Controls.Add(this.lblRg);
-            this.tabPage1.Controls.Add(this.txtNome);
-            this.tabPage1.Controls.Add(this.lblNome);
-            this.tabPage1.Controls.Add(this.txtCodigo);
-            this.tabPage1.Controls.Add(this.lblCodigo);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(791, 314);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Cadastro";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabCadastroClientes.Controls.Add(this.btnEditar);
+            this.tabCadastroClientes.Controls.Add(this.btnExcluir);
+            this.tabCadastroClientes.Controls.Add(this.btnSalvar);
+            this.tabCadastroClientes.Controls.Add(this.btnNovo);
+            this.tabCadastroClientes.Controls.Add(this.cbEstado);
+            this.tabCadastroClientes.Controls.Add(this.mtbCEP);
+            this.tabCadastroClientes.Controls.Add(this.mtbCelular);
+            this.tabCadastroClientes.Controls.Add(this.mtbTelefone);
+            this.tabCadastroClientes.Controls.Add(this.mtbCPF);
+            this.tabCadastroClientes.Controls.Add(this.mtbRG);
+            this.tabCadastroClientes.Controls.Add(this.txtCidade);
+            this.tabCadastroClientes.Controls.Add(this.lblCidade);
+            this.tabCadastroClientes.Controls.Add(this.lblEstado);
+            this.tabCadastroClientes.Controls.Add(this.lblCEP);
+            this.tabCadastroClientes.Controls.Add(this.txtBairro);
+            this.tabCadastroClientes.Controls.Add(this.lblBairro);
+            this.tabCadastroClientes.Controls.Add(this.txtComplemento);
+            this.tabCadastroClientes.Controls.Add(this.lblComplemento);
+            this.tabCadastroClientes.Controls.Add(this.txtNumero);
+            this.tabCadastroClientes.Controls.Add(this.lblNumero);
+            this.tabCadastroClientes.Controls.Add(this.txtEndereco);
+            this.tabCadastroClientes.Controls.Add(this.lblEndereco);
+            this.tabCadastroClientes.Controls.Add(this.lblCelular);
+            this.tabCadastroClientes.Controls.Add(this.lblTelefone);
+            this.tabCadastroClientes.Controls.Add(this.txtEmail);
+            this.tabCadastroClientes.Controls.Add(this.lblEmail);
+            this.tabCadastroClientes.Controls.Add(this.lblCPF);
+            this.tabCadastroClientes.Controls.Add(this.lblRg);
+            this.tabCadastroClientes.Controls.Add(this.txtNome);
+            this.tabCadastroClientes.Controls.Add(this.lblNome);
+            this.tabCadastroClientes.Controls.Add(this.txtCodigo);
+            this.tabCadastroClientes.Controls.Add(this.lblCodigo);
+            this.tabCadastroClientes.Location = new System.Drawing.Point(4, 22);
+            this.tabCadastroClientes.Name = "tabCadastroClientes";
+            this.tabCadastroClientes.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCadastroClientes.Size = new System.Drawing.Size(791, 314);
+            this.tabCadastroClientes.TabIndex = 0;
+            this.tabCadastroClientes.Text = "Cadastro";
+            this.tabCadastroClientes.UseVisualStyleBackColor = true;
             // 
             // btnEditar
             // 
@@ -171,6 +171,7 @@
             this.btnExcluir.TabIndex = 36;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnSalvar
             // 
@@ -454,24 +455,24 @@
             this.lblCodigo.TabIndex = 0;
             this.lblCodigo.Text = "Código:";
             // 
-            // tabPage2
+            // tabConsultaClientes
             // 
-            this.tabPage2.Controls.Add(this.btnEditarConsulta);
-            this.tabPage2.Controls.Add(this.btnExcluirConsulta);
-            this.tabPage2.Controls.Add(this.btnSalvarConsulta);
-            this.tabPage2.Controls.Add(this.btnNovaConsulta);
-            this.tabPage2.Controls.Add(this.lblTotalRegistros);
-            this.tabPage2.Controls.Add(this.dgListaClientes);
-            this.tabPage2.Controls.Add(this.btnPesquisa);
-            this.tabPage2.Controls.Add(this.txtNomeConsulta);
-            this.tabPage2.Controls.Add(this.lblNomeConsulta);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(791, 314);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Consulta";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabConsultaClientes.Controls.Add(this.btnEditarConsulta);
+            this.tabConsultaClientes.Controls.Add(this.btnExcluirConsulta);
+            this.tabConsultaClientes.Controls.Add(this.btnSalvarConsulta);
+            this.tabConsultaClientes.Controls.Add(this.btnNovaConsulta);
+            this.tabConsultaClientes.Controls.Add(this.lblTotalRegistros);
+            this.tabConsultaClientes.Controls.Add(this.dgListaClientes);
+            this.tabConsultaClientes.Controls.Add(this.btnPesquisa);
+            this.tabConsultaClientes.Controls.Add(this.txtNomeConsulta);
+            this.tabConsultaClientes.Controls.Add(this.lblNomeConsulta);
+            this.tabConsultaClientes.Location = new System.Drawing.Point(4, 22);
+            this.tabConsultaClientes.Name = "tabConsultaClientes";
+            this.tabConsultaClientes.Padding = new System.Windows.Forms.Padding(3);
+            this.tabConsultaClientes.Size = new System.Drawing.Size(791, 314);
+            this.tabConsultaClientes.TabIndex = 1;
+            this.tabConsultaClientes.Text = "Consulta";
+            this.tabConsultaClientes.UseVisualStyleBackColor = true;
             // 
             // btnEditarConsulta
             // 
@@ -569,10 +570,10 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabCadastroClientes.ResumeLayout(false);
+            this.tabCadastroClientes.PerformLayout();
+            this.tabConsultaClientes.ResumeLayout(false);
+            this.tabConsultaClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgListaClientes)).EndInit();
             this.ResumeLayout(false);
 
@@ -583,8 +584,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTituloCadastroCliente;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabCadastroClientes;
+        private System.Windows.Forms.TabPage tabConsultaClientes;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.TextBox txtCodigo;
