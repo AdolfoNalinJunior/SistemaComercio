@@ -20,7 +20,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             InitializeComponent();
         }
 
-        #region Botão Salvar
+        #region BotãoSalvar
         /// <summary>
         /// Primeira etapa de salvamento  de clientes -- botão salvar
         /// </summary>
@@ -30,7 +30,6 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         {
             // 1 passo - Receber os dados dentro so objeto modelo de cliente
             Clientes cliente = new Clientes();
-            ClienteDAO objDao = new ClienteDAO();
 
             cliente.Nome = txtNome.Text;
             cliente.RG = mtbRG.Text;
@@ -50,11 +49,16 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             ClienteDAO clienteDao = new ClienteDAO();
             clienteDao.CadastrarCliente(cliente);
 
-            dgListaClientes.DataSource = objDao.ConsultarClientes();
+            dgListaClientes.DataSource = clienteDao.ConsultarClientes();
         }
         #endregion
 
         #region LoadClientes
+        /// <summary>
+        /// Inicialização do formulário
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmClientes_Load(object sender, EventArgs e)
         {
             ClienteDAO dao = new ClienteDAO();
@@ -63,6 +67,12 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         #endregion
 
         #region EditarClientes
+        /// <summary>
+        /// Evento de CellClick, levar os membros do obj para a area de cadastramento de cliente, para eles serem 
+        /// modicados
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgListaClintes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             ClienteDAO objDao = new ClienteDAO();
@@ -89,6 +99,11 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         #endregion
 
         #region BotaoExcluir
+        /// <summary>
+        /// Evento btnExcluir_Click Exclusão do obj 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             // botão de excluir 
