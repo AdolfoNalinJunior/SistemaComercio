@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace ProjetosControle_De_Vendas.br.com.projetos.conexao
 {
+    /// <summary>
+    /// Classe responsavel pela conecxão do banco de dados
+    /// </summary>
     public class ConnectionFactory
     {
-        // Método que conecta o banco de dados
-
         public MySqlConnection getConnection()
         {
             string connection = ConfigurationManager.ConnectionStrings["bdvendas"].ConnectionString;
