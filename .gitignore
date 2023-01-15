@@ -4,3 +4,4 @@ ProjetosControle De Vendas.csproj
 *.exe
 *.pdb
 *.exe.config
+bin/Debug obj/Debug

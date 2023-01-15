@@ -16,15 +16,27 @@ using System.Windows.Forms;
 
 namespace ProjetosControle_De_Vendas.br.com.projetos.dao
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ClienteDAO
     {
-        // Atributo
+        #region connetion
+        /// <summary>
+        /// Atributo MySqlCoonction 
+        /// </summary>
         private MySqlConnection connection;
+        #endregion
 
+        #region ClienteDAO  
+        /// <summary>
+        /// Contrutor com a conecxão da classe ConnetionFactory
+        /// </summary>
         public ClienteDAO()
         {
             this.connection =  new ConnectionFactory().getConnection();
         }
+        #endregion
 
         #region CadastrarCliente
         /// <summary>
@@ -69,6 +81,10 @@ values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@
         #endregion
 
         #region ConsultarClientes
+        /// <summary>
+        /// Consulta do banco de dados, para listar os clientes cadastrado nele
+        /// </summary>
+        /// <returns>Retorna a  lista de clientes que está no banco de dados </returns>
         public DataTable ConsultarClientes()
         {
             try
@@ -97,7 +113,10 @@ values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@
         #endregion
 
         #region EditarCliente
-
+        /// <summary>
+        /// Realiza a edição dos dados do cliente
+        /// </summary>
+        /// <param name="cliente">Parametro do tipo cliente</param>
         public void EditarCliente(Clientes cliente)
         {
             try
@@ -135,7 +154,10 @@ where id=@id";
         #endregion
 
         #region ExcluirClientes
-
+        /// <summary>
+        /// Método responsável pela exclusão do <paramref name="cliente"/> pelo id
+        /// </summary>
+        /// <param name="cliente">Parametro do tipo <paramref name="cliente" \/></param>
         public void ExcluirClientes(Clientes cliente)
         {
             try
