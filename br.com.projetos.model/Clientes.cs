@@ -9,7 +9,10 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.model
 {
     public class Clientes
     {
-        #region Atributos do clientes
+        #region MembrosDoCliente
+        /// <summary>
+        /// Membros que são propriedade dos clientes
+        /// </summary>
         public int Codigo { get; set; }
         public string Nome { get; set; }
         public string RG { get; set; }
