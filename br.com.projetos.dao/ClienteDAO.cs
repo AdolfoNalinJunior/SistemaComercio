@@ -40,7 +40,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.dao
 
         #region CadastrarCliente
         /// <summary>
-        /// Método de cadastro de Cliente
+        /// Cadastro do <paramref name="obj"/> no banco de dados
         /// </summary>
         public void CadastrarCliente(Clientes obj)
         {
