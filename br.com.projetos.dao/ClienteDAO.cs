@@ -125,7 +125,7 @@ values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@
             try
             {
 
-                string sqlcmd = @"update dbvendas.tb.clientes set nome=@nome,rg=@rg,cpf=@cpf,email=@email,telefone=@telefone,celular=@celular,cep=@cep,endereco=@endereco,numero=@numero,
+                string sqlcmd = @"update bdvendas.tb_clientes set nome=@nome,rg=@rg,cpf=@cpf,email=@email,telefone=@telefone,celular=@celular,cep=@cep,endereco=@endereco,numero=@numero,
 complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado
 where id=@id";
                 MySqlCommand cmdSql = new MySqlCommand(sqlcmd,connection);
