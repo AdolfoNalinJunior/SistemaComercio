@@ -72,6 +72,7 @@ values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@
 
                 MessageBox.Show($"O cliente {obj.Nome} Foi cadastrado com sucesso!");
 
+                connection.Close();
             }
             catch (Exception ex)
             {
@@ -103,6 +104,8 @@ values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@
                 MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql); 
                 DA.Fill(tabelaCliente);
                 return tabelaCliente;
+
+                connection.Close();
             }
             catch (Exception ex)
             {
@@ -145,6 +148,8 @@ where id=@id";
                 cmdSql.ExecuteNonQuery();
 
                 MessageBox.Show($"O Cliente {cliente.Nome} foi editado com sucesso!");
+
+                connection.Close();
             }
             catch (Exception ex)
             {
@@ -171,6 +176,9 @@ where id=@id";
                 sqlCmd.ExecuteNonQuery();
 
                 MessageBox.Show($"O cliente {cliente.Nome} foi excluido com sucesso");
+
+                // Fachando a conxão com o banco de dados
+                connection.Close();
             }
             catch (Exception ex)
             {
