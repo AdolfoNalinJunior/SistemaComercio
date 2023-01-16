@@ -92,8 +92,10 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             txtCidade.Text = dgListaClientes.CurrentRow.Cells[12].Value.ToString();
             cbEstado.Text = dgListaClientes.CurrentRow.Cells[13].Value.ToString();
 
-            // 2 passo - Alterar para gui Dados pessoais
+            // 2 passo - Alterar para guia Dados pessoais
             tabControl1.SelectedTab = tabCadastroClientes;
+
+            // Atualizando o DatagridView
             dgListaClientes.DataSource = objDao.ConsultarClientes();
         }
         #endregion
@@ -155,5 +157,13 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             dgListaClientes.DataSource = clienteDao.ConsultarClientes();
         }
         #endregion
+
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            string nome = txtNomeConsulta.Text;
+
+            ClienteDAO clienteDao = new ClienteDAO();
+            dgListaClientes.DataSource = clienteDao.BuscarCliente(nome);
+        }
     }
 }

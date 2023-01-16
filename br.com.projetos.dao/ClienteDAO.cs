@@ -208,13 +208,11 @@ where id=@id";
                 MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql);
                 DA.Fill(tabelaCliente);
                 return tabelaCliente;
-
-                connection.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Aconteceu um erro: {ex.StackTrace}");
-                return null;
+                return null;             
             }
         }
         #endregion
