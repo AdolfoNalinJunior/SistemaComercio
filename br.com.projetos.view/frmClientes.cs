@@ -120,5 +120,39 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             dgListaClientes.DataSource = objDao.ConsultarClientes();
         }
         #endregion
+
+        #region BotãoEditar
+        /// <summary>
+        /// Evendo btnEditar_Click: Ao clicar no botão será autorizado a edição
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            // 1 passo - Receber os dados dentro so objeto modelo de cliente
+            Clientes cliente = new Clientes();
+
+            cliente.Nome = txtNome.Text;
+            cliente.RG = mtbRG.Text;
+            cliente.CPF = mtbCPF.Text;
+            cliente.Email = txtEmail.Text;
+            cliente.Telefone = mtbTelefone.Text;
+            cliente.Celular = mtbCelular.Text;
+            cliente.CEP = mtbCEP.Text;
+            cliente.Endereco = txtEndereco.Text;
+            cliente.Numero = int.Parse(txtNumero.Text);
+            cliente.Bairro = txtBairro.Text;
+            cliente.Complemento = txtComplemento.Text;
+            cliente.Cidade = txtCidade.Text;
+            cliente.Estado = cbEstado.Text;
+            cliente.Codigo = int.Parse(txtCodigo.Text);
+
+            // 2 passo - Criar um objeto da classe ClienteDAO para auterar os dados do cliente
+            ClienteDAO clienteDao = new ClienteDAO();
+            clienteDao.EditarCliente(cliente);
+
+            dgListaClientes.DataSource = clienteDao.ConsultarClientes();
+        }
+        #endregion
     }
 }
