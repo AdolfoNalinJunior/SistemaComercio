@@ -151,6 +151,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             ClienteDAO clienteDao = new ClienteDAO();
             clienteDao.EditarCliente(cliente);
 
+            // Atualizar o dataGrid view
             dgListaClientes.DataSource = clienteDao.ConsultarClientes();
         }
         #endregion
