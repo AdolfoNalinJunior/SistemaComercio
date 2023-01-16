@@ -186,6 +186,38 @@ where id=@id";
             }
         }
         #endregion
+
+        #region BuscarPorNome
+        public DataTable BuscarCliente(string nome)
+        {
+            try
+            {
+                // 1 passo - Cirar oDataTable e o comando SQL
+                DataTable tabelaCliente = new DataTable();
+                string sql = "SELECT * FROM bdvendas.tb_clientes where nome=@nome";
+
+                //2 passo - Organizar o comando e executar
+                MySqlCommand cmdSql = new MySqlCommand(sql, connection);
+
+                cmdSql.Parameters.AddWithValue("@nome", nome);
+
+                // 3 passo - Abertura da connection
+                connection.Open();
+
+                // 4 passo - Criar uma  MySqlDataApter para preencher os datos no DataTable
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql);
+                DA.Fill(tabelaCliente);
+                return tabelaCliente;
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro: {ex.StackTrace}");
+                return null;
+            }
+        }
+        #endregion
     }
 
 }
