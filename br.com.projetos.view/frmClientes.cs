@@ -164,6 +164,16 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
 
             ClienteDAO clienteDao = new ClienteDAO();
             dgListaClientes.DataSource = clienteDao.BuscarCliente(nome);
+
+            if (dgListaClientes.Rows.Count == 0)
+            {
+                dgListaClientes.DataSource = clienteDao.ConsultarClientes();
+            }
+        }
+
+        private void txtNomeConsulta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string nome = txtNomeConsulta.Text;
         }
     }
 }
