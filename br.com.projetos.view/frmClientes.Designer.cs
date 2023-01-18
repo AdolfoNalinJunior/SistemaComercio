@@ -162,6 +162,7 @@
             this.btnEditar.TabIndex = 37;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnExcluir
             // 
@@ -539,6 +540,7 @@
             this.btnPesquisa.TabIndex = 2;
             this.btnPesquisa.Text = "Pesquisar";
             this.btnPesquisa.UseVisualStyleBackColor = true;
+            this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
             // 
             // txtNomeConsulta
             // 
@@ -546,6 +548,7 @@
             this.txtNomeConsulta.Name = "txtNomeConsulta";
             this.txtNomeConsulta.Size = new System.Drawing.Size(198, 20);
             this.txtNomeConsulta.TabIndex = 1;
+            this.txtNomeConsulta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomeConsulta_KeyPress);
             // 
             // lblNomeConsulta
             // 

@@ -173,7 +173,15 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
 
         private void txtNomeConsulta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string nome = txtNomeConsulta.Text;
+            string nome =  '%' + txtNomeConsulta.Text + '%';
+
+            ClienteDAO clienteDao = new ClienteDAO();
+            dgListaClientes.DataSource = clienteDao.ListarClienteNome(nome);
+
+            if (dgListaClientes. Rows.Count == 0)
+            {
+                dgListaClientes.DataSource = clienteDao.ConsultarClientes();
+            }
         }
     }
 }
