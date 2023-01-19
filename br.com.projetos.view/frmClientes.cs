@@ -158,6 +158,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
         #endregion
 
+        #region btnPesquisar_Click
         private void btnPesquisa_Click(object sender, EventArgs e)
         {
             string nome = txtNomeConsulta.Text;
@@ -170,7 +171,9 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
                 dgListaClientes.DataSource = clienteDao.ConsultarClientes();
             }
         }
+        #endregion
 
+        #region NomeConsultar_KeyPress
         private void txtNomeConsulta_KeyPress(object sender, KeyPressEventArgs e)
         {
             string nome =  '%' + txtNomeConsulta.Text + '%';
@@ -183,7 +186,9 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
                 dgListaClientes.DataSource = clienteDao.ConsultarClientes();
             }
         }
+        #endregion
 
+        #region btnPesquisarCEP_Click
         private void btnPesquisarCEP_Click(object sender, EventArgs e)
         {
             // Botão consultar 
@@ -206,5 +211,6 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
                 MessageBox.Show($"Endereço não encontrado. Por favor digite manualmente!");
             }
         }
+        #endregion
     }
 }
