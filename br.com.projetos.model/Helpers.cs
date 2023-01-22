@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace ProjetosControle_De_Vendas.br.com.projetos.model
 {
+    /// <summary>
+    /// Classe usada para armazenar métodos de socorro
+    /// </summary>
     public class Helpers
     {
         #region Limpar
