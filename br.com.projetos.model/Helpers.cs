@@ -10,6 +10,10 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.model
     public class Helpers
     {
         #region Limpar
+        /// <summary>
+        /// Calsse deticata a realziar a limpeza de tela, podendo ser usada com qualquer tela form
+        /// </summary>
+        /// <param name="tela">Tela que vai ser limpa</param>
         public void LimparTela(Form tela)
         {
             foreach (Control ctrPai in tela.Controls)
