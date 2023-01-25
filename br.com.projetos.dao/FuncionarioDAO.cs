@@ -42,7 +42,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.dao
             try
             {
                 // 1 passo - Criar o comando SQL
-                string cmdSql = @"insert info bdvendas.tb_funcionarios(nome,rg,cpf,email,senha,cargo,nivel_acesso,telefone,celular,cep,endereco,numero,complemento,bairro,cidade,estado)
+                string cmdSql = @"insert into bdvendas.tb_funcionarios(nome,rg,cpf,email,senha,cargo,nivel_acesso,telefone,celular,cep,endereco,numero,complemento,bairro,cidade,estado)
 values (@nome,@rg,@cpf,@email,@senha,@cargo,@nivel_acesso,@telefone,@celular,@cep,@endereco,@numero,@complemento,@bairro,@cidade,@estado)";
 
                 // 2 passo - Organizar e executar o comando sql
