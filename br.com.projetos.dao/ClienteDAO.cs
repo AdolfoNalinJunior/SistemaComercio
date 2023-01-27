@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ using System.Windows.Forms;
 namespace ProjetosControle_De_Vendas.br.com.projetos.dao
 {
     /// <summary>
-    /// 
+    /// Classe que tem conexão com a tabela Cliente no banco de dados
     /// </summary>
     public class ClienteDAO
     {
@@ -99,13 +100,15 @@ values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@
 
                 // 3 passo - Abertura da connection
                 connection.Open();
+                cmdSql.ExecuteNonQuery();
 
                 // 4 passo - Criar uma  MySqlDataApter para preencher os datos no DataTable
                 MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql); 
                 DA.Fill(tabelaCliente);
-                return tabelaCliente;
 
+                // 4 passo - Fechar a conexão
                 connection.Close();
+                return tabelaCliente;
             }
             catch (Exception ex)
             {
@@ -194,7 +197,39 @@ where id=@id";
             {
                 // 1 passo - Cirar oDataTable e o comando SQL
                 DataTable tabelaCliente = new DataTable();
-                string sql = "SELECT * FROM bdvendas.tb_clientes where nome=@nome";
+                string sql = "SELECT * FROM bdvendas.tb_clientes where nome = @nome";
+
+                //2 passo - Organizar o comando e executar
+                MySqlCommand cmdSql = new MySqlCommand(sql, connection);
+
+                cmdSql.Parameters.AddWithValue("@nome", nome);
+
+                // 3 passo - Abertura da connection
+                connection.Open();
+                
+                // 4 passo - Criar uma  MySqlDataApter para preencher os datos no DataTable
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql);
+                DA.Fill(tabelaCliente);
+                return tabelaCliente;
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro: {ex.StackTrace} {ex.Message}");
+                return null;             
+            }
+        }
+        #endregion
+
+        #region ListarClienteNome
+        public DataTable ListarClienteNome(string nome)
+        {
+            try
+            {
+                // 1 passo - Cirar oDataTable e o comando SQL
+                DataTable tabelaCliente = new DataTable();
+                string sql = "SELECT * FROM bdvendas.tb_clientes where nome like @nome";
 
                 //2 passo - Organizar o comando e executar
                 MySqlCommand cmdSql = new MySqlCommand(sql, connection);
@@ -208,14 +243,15 @@ where id=@id";
                 MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql);
                 DA.Fill(tabelaCliente);
                 return tabelaCliente;
+
+                connection.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Aconteceu um erro: {ex.StackTrace}");
-                return null;             
+                MessageBox.Show($"Aconteceu um erro: {ex.StackTrace} {ex.Message}");
+                return null;
             }
         }
         #endregion
     }
-
 }
