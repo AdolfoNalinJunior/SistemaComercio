@@ -3,6 +3,7 @@ using ProjetosControle_De_Vendas.br.com.projetos.conexao;
 using ProjetosControle_De_Vendas.br.com.projetos.model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,7 +62,7 @@ values (@nome,@rg,@cpf,@email,@senha,@cargo,@nivel_acesso,@telefone,@celular,@ce
                 sqlcmd.Parameters.AddWithValue("@numero", funcionario.Numero);
                 sqlcmd.Parameters.AddWithValue("@Complemento", funcionario.Complemento);
                 sqlcmd.Parameters.AddWithValue("@bairro", funcionario.Bairro);
-                sqlcmd.Parameters.AddWithValue("@cidade", funcionario.Cidade);
+                sqlcmd.Parameters.AddWithValue("@cidade", funcionario.Cidade); 
                 sqlcmd.Parameters.AddWithValue("@estado", funcionario.Estado);
 
                 // 3 passo - Abrir a connection e executar sql
@@ -76,6 +77,39 @@ values (@nome,@rg,@cpf,@email,@senha,@cargo,@nivel_acesso,@telefone,@celular,@ce
             catch (Exception ex)
             {
                 MessageBox.Show($"A conteceu um erro no caminho: {ex.StackTrace} com a mesagem: {ex.Message}");
+            }
+        }
+
+        #endregion
+
+        #region ConsultarFuncionario
+        public DataTable ConsultarFuncionario()
+        {
+            try
+            {
+                // 1 passo - Cirar oDataTable e o comando SQL
+                DataTable tabelaFuncionario= new DataTable();
+                string sql = "SELECT * FROM bdvendas.tb_funcionarios;";
+
+                //2 passo - Organizar o comando e executar
+                MySqlCommand cmdSql = new MySqlCommand(sql, connection);
+
+                // 3 passo - Abertura da connection
+                connection.Open();
+                cmdSql.ExecuteNonQuery();
+
+                // 4 passo - Criar uma  MySqlDataApter para preencher os datos no DataTable
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql);
+                DA.Fill(tabelaFuncionario);
+
+                // 4 passo - Ferchar a conexão
+                connection.Close();
+                return tabelaFuncionario;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro: {ex.StackTrace}");
+                return null;
             }
         }
 
