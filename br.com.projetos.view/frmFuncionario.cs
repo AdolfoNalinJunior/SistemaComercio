@@ -57,5 +57,11 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             //dgListaFuncionario.DataSource = objDao.ConsultarFuncionario();
         }
         #endregion
+
+        private void frmFuncionario_Load(object sender, EventArgs e)
+        {
+            FuncionarioDAO objDao = new FuncionarioDAO();
+            dgListaFuncionario.DataSource = objDao.ConsultarFuncionario();
+        }
     }
 }
