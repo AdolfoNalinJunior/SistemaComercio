@@ -4,6 +4,7 @@ using ProjetosControle_De_Vendas.br.com.projetos.model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -113,6 +114,68 @@ values (@nome,@rg,@cpf,@email,@senha,@cargo,@nivel_acesso,@telefone,@celular,@ce
             }
         }
 
+        #endregion
+
+        #region EditarFuncionario
+
+        public void EditarFuncionario(Funcionario obj)
+        {
+            try
+            {
+                string sqlCmd = @"update bdvendas.tb_funcionarios set nome=@nome,rg=@rg,cpf=@cpf,email=@email,senha=@senha,cargo=@cargo,nivel_acesso=@nivel_acesso,telefone=@telefone,celular=@celular,cep=@cep,
+endereco=@endereco,numero=@numero,complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@id";
+
+                MySqlCommand cmdSql = new MySqlCommand();
+                cmdSql.Parameters.AddWithValue("@id", obj.Codigo);
+                cmdSql.Parameters.AddWithValue("@nome", obj.Nome);
+                cmdSql.Parameters.AddWithValue("@rg", obj.RG);
+                cmdSql.Parameters.AddWithValue("@cpf", obj.CPF);
+                cmdSql.Parameters.AddWithValue("@email", obj.Email);
+                cmdSql.Parameters.AddWithValue("@senha", obj.Senha);
+                cmdSql.Parameters.AddWithValue("@cargo", obj.Cargo);
+                cmdSql.Parameters.AddWithValue("@nivel_acesso", obj.NivelAcesso);
+                cmdSql.Parameters.AddWithValue("@telefone", obj.Telefone);
+                cmdSql.Parameters.AddWithValue("@celular", obj.Celular);
+                cmdSql.Parameters.AddWithValue("@cep", obj.CEP);
+                cmdSql.Parameters.AddWithValue("@endereco", obj.Endereco);
+                cmdSql.Parameters.AddWithValue("@bairro", obj.Bairro);
+                cmdSql.Parameters.AddWithValue("@estado", obj.Estado);
+
+                connection.Open();
+                cmdSql.ExecuteNonQuery();
+
+                MessageBox.Show($"Funcionario {obj.Nome} editado com sucesso!");
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro do tipo {ex.Message} como o caminho {ex.StackTrace}");
+            }
+        }
+        #endregion
+
+        #region ExcluirFuncionario
+        public void ExcluirFuncionario(Funcionario obj)
+        {
+            try
+            {
+                string sqlCmd = "delete from bdvendas.tb_funcionarios where id=@id";
+
+                MySqlCommand cmdSql = new MySqlCommand();
+                cmdSql.Parameters.AddWithValue("@id", obj.Codigo);
+               
+
+                connection.Open();
+                cmdSql.ExecuteNonQuery();
+
+                MessageBox.Show($"Funcionario {obj.Nome} excluido com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro do tipo {ex.Message} como o caminho {ex.StackTrace}");
+            }
+        }
         #endregion
     }
 }
