@@ -88,5 +88,18 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             tabFuncionario.SelectedTab = tabCadastroClientes;
         }
         #endregion
+
+        #region BotaoExcluir
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            Funcionario obj = new Funcionario();
+            obj.Codigo = int.Parse(txtCodigo.Text);
+
+            FuncionarioDAO objDao = new FuncionarioDAO();
+            objDao.ExcluirFuncionario(obj);
+
+            dgListaFuncionario.DataSource = objDao.ConsultarFuncionario();
+        }
+        #endregion
     }
 }
