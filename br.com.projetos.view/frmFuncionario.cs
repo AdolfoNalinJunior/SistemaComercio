@@ -77,14 +77,13 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             cbNivelAcesso.Text = dgListaFuncionario.CurrentRow.Cells[7].Value.ToString();
             mtbTelefone.Text = dgListaFuncionario.CurrentRow.Cells[8].Value.ToString();
             mtbCelular.Text = dgListaFuncionario.CurrentRow.Cells[9].Value.ToString();
-            mtbCelular.Text = dgListaFuncionario.CurrentRow.Cells[10].Value.ToString();
-            mtbCEP.Text = dgListaFuncionario.CurrentRow.Cells[11].Value.ToString();
-            txtEndereco.Text = dgListaFuncionario.CurrentRow.Cells[12].Value.ToString();
-            txtNumero.Text = dgListaFuncionario.CurrentRow.Cells[13].Value.ToString();
-            txtComplemento.Text = dgListaFuncionario.CurrentRow.Cells[14].Value.ToString();
-            txtBairro.Text = dgListaFuncionario.CurrentRow.Cells[15].Value.ToString();
-            txtCidade.Text = dgListaFuncionario.CurrentRow.Cells[16].Value.ToString();
-            cbEstado.Text = dgListaFuncionario.CurrentRow.Cells[17].Value.ToString();
+            mtbCEP.Text = dgListaFuncionario.CurrentRow.Cells[10].Value.ToString();
+            txtEndereco.Text = dgListaFuncionario.CurrentRow.Cells[11].Value.ToString();
+            txtNumero.Text = dgListaFuncionario.CurrentRow.Cells[12].Value.ToString();
+            txtComplemento.Text = dgListaFuncionario.CurrentRow.Cells[13].Value.ToString();
+            txtBairro.Text = dgListaFuncionario.CurrentRow.Cells[14].Value.ToString();
+            txtCidade.Text = dgListaFuncionario.CurrentRow.Cells[15].Value.ToString();
+            cbEstado.Text = dgListaFuncionario.CurrentRow.Cells[16].Value.ToString();
 
             tabFuncionario.SelectedTab = tabCadastroClientes;
         }
