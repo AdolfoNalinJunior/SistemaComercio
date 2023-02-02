@@ -63,5 +63,31 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             FuncionarioDAO objDao = new FuncionarioDAO();
             dgListaFuncionario.DataSource = objDao.ConsultarFuncionario();
         }
+
+        #region Editar campos Funcionário
+        private void dgListaFuncionario_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtCodigo.Text = dgListaFuncionario.CurrentRow.Cells[0].Value.ToString();
+            txtNome.Text = dgListaFuncionario.CurrentRow.Cells[1].Value.ToString();
+            mtbRG.Text = dgListaFuncionario.CurrentRow.Cells[2].Value.ToString();
+            mtbCPF.Text = dgListaFuncionario.CurrentRow.Cells[3].Value.ToString();
+            txtEmail.Text = dgListaFuncionario.CurrentRow.Cells[4].Value.ToString();
+            txtSenha.Text = dgListaFuncionario.CurrentRow.Cells[5].Value.ToString();
+            cbCargo.Text = dgListaFuncionario.CurrentRow.Cells[6].Value.ToString();
+            cbNivelAcesso.Text = dgListaFuncionario.CurrentRow.Cells[7].Value.ToString();
+            mtbTelefone.Text = dgListaFuncionario.CurrentRow.Cells[8].Value.ToString();
+            mtbCelular.Text = dgListaFuncionario.CurrentRow.Cells[9].Value.ToString();
+            mtbCelular.Text = dgListaFuncionario.CurrentRow.Cells[10].Value.ToString();
+            mtbCEP.Text = dgListaFuncionario.CurrentRow.Cells[11].Value.ToString();
+            txtEndereco.Text = dgListaFuncionario.CurrentRow.Cells[12].Value.ToString();
+            txtNumero.Text = dgListaFuncionario.CurrentRow.Cells[13].Value.ToString();
+            txtComplemento.Text = dgListaFuncionario.CurrentRow.Cells[14].Value.ToString();
+            txtBairro.Text = dgListaFuncionario.CurrentRow.Cells[15].Value.ToString();
+            txtCidade.Text = dgListaFuncionario.CurrentRow.Cells[16].Value.ToString();
+            cbEstado.Text = dgListaFuncionario.CurrentRow.Cells[17].Value.ToString();
+
+            tabFuncionario.SelectedTab = tabCadastroClientes;
+        }
+        #endregion
     }
 }
