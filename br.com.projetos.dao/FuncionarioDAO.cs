@@ -142,7 +142,7 @@ values (@nome,@rg,@cpf,@email,@senha,@cargo,@nivel_acesso,@telefone,@celular,@ce
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Aconteceu um erro: {ex.StackTrace}");
+                MessageBox.Show($"Aconteceu um erro: {ex.StackTrace} Mensagem de Erro: {ex.Message}");
                 return null;
             }
         }
@@ -210,6 +210,41 @@ endereco=@endereco,numero=@numero,complemento=@complemento,bairro=@bairro,cidade
                 MessageBox.Show($"Aconteceu um erro do tipo {ex.Message} como o caminho {ex.StackTrace}");
             }
         }
+        #endregion
+
+        #region ListarFuncionariosNome
+        public DataTable ListarFuncionariosNome(string nome)
+        {
+            try
+            {
+                // 1 passo - Cirar oDataTable e o comando SQL
+                DataTable tabelaFuncionario = new DataTable();
+                string sql = "SELECT * FROM bdvendas.tb_funcionarios where nome like @nome";
+
+                //2 passo - Organizar o comando e executar
+                MySqlCommand cmdSql = new MySqlCommand(sql, connection);
+                cmdSql.Parameters.AddWithValue("@nome", nome);
+
+                // 3 passo - Abertura da connection
+                connection.Open();
+                cmdSql.ExecuteNonQuery();
+
+                // 4 passo - Criar uma  MySqlDataApter para preencher os datos no DataTable
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql);
+                DA.Fill(tabelaFuncionario);
+
+                // 4 passo - Ferchar a conexão
+                connection.Close();
+                return tabelaFuncionario;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro: {ex.StackTrace} com a mensagem de: {ex.Message}");
+                return null;
+            }
+        }
+
+
         #endregion
     }
 }
