@@ -109,7 +109,7 @@ values (@nome,@rg,@cpf,@email,@senha,@cargo,@nivel_acesso,@telefone,@celular,@ce
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Aconteceu um erro: {ex.StackTrace}");
+                MessageBox.Show($"Aconteceu um erro: {ex.StackTrace} Com a mensagem: {ex.Message}");
                 return null;
             }
         }
@@ -156,8 +156,7 @@ values (@nome,@rg,@cpf,@email,@senha,@cargo,@nivel_acesso,@telefone,@celular,@ce
                 string sqlCmd = @"update bdvendas.tb_funcionarios set nome=@nome,rg=@rg,cpf=@cpf,email=@email,senha=@senha,cargo=@cargo,nivel_acesso=@nivel_acesso,telefone=@telefone,celular=@celular,cep=@cep,
 endereco=@endereco,numero=@numero,complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@id";
 
-                MySqlCommand cmdSql = new MySqlCommand();
-                cmdSql.Parameters.AddWithValue("@id", obj.Codigo);
+                MySqlCommand cmdSql = new MySqlCommand(sqlCmd,connection);
                 cmdSql.Parameters.AddWithValue("@nome", obj.Nome);
                 cmdSql.Parameters.AddWithValue("@rg", obj.RG);
                 cmdSql.Parameters.AddWithValue("@cpf", obj.CPF);
@@ -170,9 +169,11 @@ endereco=@endereco,numero=@numero,complemento=@complemento,bairro=@bairro,cidade
                 cmdSql.Parameters.AddWithValue("@cep", obj.CEP);
                 cmdSql.Parameters.AddWithValue("@endereco", obj.Endereco);
                 cmdSql.Parameters.AddWithValue("@numero", obj.Numero);
-                cmdSql.Parameters.AddWithValue("@complemneto", obj.Complemento);
+                cmdSql.Parameters.AddWithValue("@complemento", obj.Complemento);
                 cmdSql.Parameters.AddWithValue("@bairro", obj.Bairro);
+                cmdSql.Parameters.AddWithValue("@cidade", obj.Cidade);
                 cmdSql.Parameters.AddWithValue("@estado", obj.Estado);
+                cmdSql.Parameters.AddWithValue("@id", obj.Codigo);
 
                 connection.Open();
                 cmdSql.ExecuteNonQuery();
