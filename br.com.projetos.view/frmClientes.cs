@@ -93,7 +93,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             cbEstado.Text = dgListaClientes.CurrentRow.Cells[13].Value.ToString();
 
             // 2 passo - Alterar para guia Dados pessoais
-            tabControl1.SelectedTab = tabCadastroClientes;
+            tabCliente.SelectedTab = tabCadastroClientes;
 
             // Atualizando o DatagridView
             dgListaClientes.DataSource = objDao.ConsultarClientes();
@@ -164,10 +164,11 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             string nome = txtNomeConsulta.Text;
 
             ClienteDAO clienteDao = new ClienteDAO();
-            dgListaClientes.DataSource = clienteDao.BuscarCliente(nome);
+            dgListaClientes.DataSource = clienteDao.BuscarClienteNome(nome);
 
-            if (dgListaClientes.Rows.Count == 0)
+            if (dgListaClientes.Rows.Count == 0 || txtNomeConsulta.Text == String.Empty)
             {
+                MessageBox.Show("Cliente não encontrado, por favor verifique se o nome está correto ou se o cleinte existe no banco de dados");
                 dgListaClientes.DataSource = clienteDao.ConsultarClientes();
             }
         }
@@ -210,6 +211,13 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             {
                 MessageBox.Show($"Endereço não encontrado. Por favor digite manualmente!");
             }
+        }
+        #endregion
+
+        #region btnNovo_Click
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            new Helpers().LimparTela(this);
         }
         #endregion
     }
