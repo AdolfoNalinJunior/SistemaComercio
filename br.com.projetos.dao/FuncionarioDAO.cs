@@ -90,7 +90,7 @@ values (@nome,@rg,@cpf,@email,@senha,@cargo,@nivel_acesso,@telefone,@celular,@ce
             {
                 // 1 passo - Cirar oDataTable e o comando SQL
                 DataTable tabelaFuncionario= new DataTable();
-                string sql = "SELECT * FROM bdvendas.tb_funcionarios;";
+                string sql = "SELECT * FROM bdvendas.tb_funcionarios";
 
                 //2 passo - Organizar o comando e executar
                 MySqlCommand cmdSql = new MySqlCommand(sql, connection);
@@ -113,11 +113,42 @@ values (@nome,@rg,@cpf,@email,@senha,@cargo,@nivel_acesso,@telefone,@celular,@ce
                 return null;
             }
         }
+        #endregion
 
+        #region BuscaFuncionarioNome
+        public DataTable BuscarFuncionarioNome(string nome)
+        {
+            try
+            {
+                // 1 passo - Cirar oDataTable e o comando SQL
+                DataTable tabelaFuncionario = new DataTable();
+                string sql = "SELECT * FROM bdvendas.tb_funcionarios where nome = @nome";
+
+                //2 passo - Organizar o comando e executar
+                MySqlCommand cmdSql = new MySqlCommand(sql, connection);
+                cmdSql.Parameters.AddWithValue("@nome", nome);
+
+                // 3 passo - Abertura da connection
+                connection.Open();
+                cmdSql.ExecuteNonQuery();
+
+                // 4 passo - Criar uma  MySqlDataApter para preencher os datos no DataTable
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql);
+                DA.Fill(tabelaFuncionario);
+
+                // 4 passo - Ferchar a conexão
+                connection.Close();
+                return tabelaFuncionario;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro: {ex.StackTrace}");
+                return null;
+            }
+        }
         #endregion
 
         #region EditarFuncionario
-
         public void EditarFuncionario(Funcionario obj)
         {
             try
@@ -138,6 +169,8 @@ endereco=@endereco,numero=@numero,complemento=@complemento,bairro=@bairro,cidade
                 cmdSql.Parameters.AddWithValue("@celular", obj.Celular);
                 cmdSql.Parameters.AddWithValue("@cep", obj.CEP);
                 cmdSql.Parameters.AddWithValue("@endereco", obj.Endereco);
+                cmdSql.Parameters.AddWithValue("@numero", obj.Numero);
+                cmdSql.Parameters.AddWithValue("@complemneto", obj.Complemento);
                 cmdSql.Parameters.AddWithValue("@bairro", obj.Bairro);
                 cmdSql.Parameters.AddWithValue("@estado", obj.Estado);
 
@@ -162,14 +195,15 @@ endereco=@endereco,numero=@numero,complemento=@complemento,bairro=@bairro,cidade
             {
                 string sqlCmd = "delete from bdvendas.tb_funcionarios where id=@id";
 
-                MySqlCommand cmdSql = new MySqlCommand();
+                MySqlCommand cmdSql = new MySqlCommand(sqlCmd,connection);
                 cmdSql.Parameters.AddWithValue("@id", obj.Codigo);
-               
 
                 connection.Open();
                 cmdSql.ExecuteNonQuery();
 
                 MessageBox.Show($"Funcionario {obj.Nome} excluido com sucesso!");
+
+                connection.Close();
             }
             catch (Exception ex)
             {
