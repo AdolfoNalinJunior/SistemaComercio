@@ -54,7 +54,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             FuncionarioDAO objDao = new FuncionarioDAO();
             objDao.CadastrarFuncionario(funcionario);
 
-            //dgListaFuncionario.DataSource = objDao.ConsultarFuncionario();
+            dgListaFuncionario.DataSource = objDao.ConsultarFuncionario();
         }
         #endregion
 
@@ -101,5 +101,67 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             dgListaFuncionario.DataSource = objDao.ConsultarFuncionario();
         }
         #endregion
+
+        #region BotaoEditarFuncionario
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Funcionario funcionario = new Funcionario();
+
+            funcionario.Codigo = int.Parse(txtCodigo.Text);
+            funcionario.Nome = txtNome.Text;
+            funcionario.RG = mtbRG.Text;
+            funcionario.CPF = mtbCPF.Text;
+            funcionario.Email = txtEmail.Text;
+            funcionario.Senha = txtSenha.Text;
+            funcionario.Cargo = cbCargo.Text;
+            funcionario.NivelAcesso = cbNivelAcesso.Text;
+            funcionario.Telefone = mtbTelefone.Text;
+            funcionario.Celular = mtbCelular.Text;
+            funcionario.CEP = mtbCEP.Text;
+            funcionario.Endereco = txtEndereco.Text;
+            funcionario.Numero = Convert.ToInt32(txtNumero.Text);
+            funcionario.Complemento = txtComplemento.Text;
+            funcionario.Bairro = txtBairro.Text;
+            funcionario.Cidade = txtCidade.Text;
+            funcionario.Estado = cbEstado.Text;
+
+            FuncionarioDAO objDao = new FuncionarioDAO(); 
+            objDao.EditarFuncionario(funcionario);
+
+            dgListaFuncionario.DataSource = objDao.ConsultarFuncionario();
+        }
+        #endregion
+
+        #region botaoPesquiosar
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            string nome = txtNomeConsulta.Text;
+
+            FuncionarioDAO dao = new FuncionarioDAO();
+
+            dgListaFuncionario.DataSource = dao.BuscarFuncionarioNome(nome);
+
+            if (dgListaFuncionario.Rows.Count == 0 || txtNomeConsulta.Text == String.Empty)
+            {
+                MessageBox.Show("Funcionário não encontrado! Certifique-se se o nome do Funcionário está cadastrado ou se está escrito corretamente!");
+                dgListaFuncionario.DataSource = dao.ConsultarFuncionario();
+            }
+        }
+        #endregion
+
+        private void txtNomeConsulta_TextChanged(object sender, EventArgs e)
+        {
+            string nome = "%" + txtNomeConsulta + "%";
+
+            FuncionarioDAO dao = new FuncionarioDAO();
+
+            dgListaFuncionario.DataSource = dao.ListarFuncionariosNome(nome);
+
+            if (dgListaFuncionario.Rows.Count == 0 || txtNomeConsulta.Text == String.Empty); 
+            {
+                dgListaFuncionario.DataSource = dao.ConsultarFuncionario();
+            }
+
+        }
     }
 }
