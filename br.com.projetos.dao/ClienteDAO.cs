@@ -191,7 +191,7 @@ where id=@id";
         #endregion
 
         #region BuscarPorNome
-        public DataTable BuscarCliente(string nome)
+        public DataTable BuscarClienteNome(string nome)
         {
             try
             {
