@@ -182,7 +182,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             ClienteDAO clienteDao = new ClienteDAO();
             dgListaClientes.DataSource = clienteDao.ListarClienteNome(nome);
 
-            if (dgListaClientes. Rows.Count == 0)
+            if (dgListaClientes. Rows.Count == 0 || txtNomeConsulta.Text == String.Empty)
             {
                 dgListaClientes.DataSource = clienteDao.ConsultarClientes();
             }
