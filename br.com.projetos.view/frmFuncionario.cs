@@ -19,11 +19,6 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             InitializeComponent();
         }
 
-        private void tabCadastroClientes_Click(object sender, EventArgs e)
-        {
-
-        }
-
         #region
         private void btnNovo_Click(object sender, EventArgs e)
         {
@@ -68,7 +63,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
         #endregion
 
-        #region Editar campos Funcionário
+        #region EditarFuncionario
         private void dgListaFuncionario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtCodigo.Text = dgListaFuncionario.CurrentRow.Cells[0].Value.ToString();
@@ -89,7 +84,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             txtCidade.Text = dgListaFuncionario.CurrentRow.Cells[15].Value.ToString();
             cbEstado.Text = dgListaFuncionario.CurrentRow.Cells[16].Value.ToString();
 
-            tabFuncionario.SelectedTab = tabCadastroClientes;
+            tabFuncionario.SelectedTab = tabCadastrarFuncionario;
         }
         #endregion
 
@@ -153,22 +148,9 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
         #endregion
 
+        
+
         #region
-        private void txtNomeConsulta_TextChanged(object sender, EventArgs e)
-        {
-            string nome = "%" + txtNomeConsulta + "%";
-
-            FuncionarioDAO dao = new FuncionarioDAO();
-
-            dgListaFuncionario.DataSource = dao.ListarFuncionariosNome(nome);
-
-            if (dgListaFuncionario.Rows.Count == 0 || txtNomeConsulta.Text == String.Empty); 
-            {
-                dgListaFuncionario.DataSource = dao.ConsultarFuncionario();
-            }
-        }
-        #endregion
-
         private void btnPesquisarCEP_Click(object sender, EventArgs e)
         {
             try
@@ -183,11 +165,24 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
                 txtCidade.Text = dado.Tables[0].Rows[0]["localidade"].ToString();
                 txtComplemento.Text = dado.Tables[0].Rows[0]["complemento"].ToString();
                 cbEstado.Text = dado.Tables[0].Rows[0]["uf"].ToString();
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Endereço não encontrado. Por favor digite manualmente!");
+            }
+        }
+        #endregion
+
+        private void txtNomeConsulta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string nome = '%' + txtNomeConsulta.Text + '%';
+
+            FuncionarioDAO dao = new FuncionarioDAO();
+            dgListaFuncionario.DataSource = dao.ListarFuncionariosNome(nome);
+
+            if (dgListaFuncionario.Rows.Count == 0 || txtNomeConsulta.Text == String.Empty)
+            {
+                dgListaFuncionario.DataSource = dao.ConsultarFuncionario();
             }
         }
     }
