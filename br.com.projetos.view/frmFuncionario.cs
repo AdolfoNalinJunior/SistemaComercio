@@ -24,10 +24,12 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
 
         }
 
+        #region
         private void btnNovo_Click(object sender, EventArgs e)
         {
-
+            new Helpers().LimparTela(this);
         }
+        #endregion
 
         #region BotaoSalvar
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -58,11 +60,13 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
         #endregion
 
+        #region
         private void frmFuncionario_Load(object sender, EventArgs e)
         {
             FuncionarioDAO objDao = new FuncionarioDAO();
             dgListaFuncionario.DataSource = objDao.ConsultarFuncionario();
         }
+        #endregion
 
         #region Editar campos Funcionário
         private void dgListaFuncionario_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -149,6 +153,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
         #endregion
 
+        #region
         private void txtNomeConsulta_TextChanged(object sender, EventArgs e)
         {
             string nome = "%" + txtNomeConsulta + "%";
@@ -161,7 +166,29 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             {
                 dgListaFuncionario.DataSource = dao.ConsultarFuncionario();
             }
+        }
+        #endregion
 
+        private void btnPesquisarCEP_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string cep = mtbCEP.Text;
+                string xmlUrl = "https://viacep.com.br/ws/" + cep + "/xml";
+                DataSet dado = new DataSet();
+                dado.ReadXml(xmlUrl);
+
+                txtEndereco.Text = dado.Tables[0].Rows[0]["logradouro"].ToString();
+                txtBairro.Text = dado.Tables[0].Rows[0]["bairro"].ToString();
+                txtCidade.Text = dado.Tables[0].Rows[0]["localidade"].ToString();
+                txtComplemento.Text = dado.Tables[0].Rows[0]["complemento"].ToString();
+                cbEstado.Text = dado.Tables[0].Rows[0]["uf"].ToString();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Endereço não encontrado. Por favor digite manualmente!");
+            }
         }
     }
 }
