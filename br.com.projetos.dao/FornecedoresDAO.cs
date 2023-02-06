@@ -29,8 +29,8 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.dao
             try
             {
                 // 1 passo - define the cmd sql = insert into
-                string cmdSql = @"insert into tb_fornecedores (nome,cnpf,email,telefone,celular,endereco,numero,complemento,bairro,cidade,estado)
-values(@nome,@cnpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@bairro,@cidade,@estado)";
+                string cmdSql = @"insert into tb_fornecedores (nome,cnpj,email,telefone,celular,endereco,numero,complemento,bairro,cidade,estado)
+values(@nome,@cnpj,@email,@telefone,@celular,@endereco,@numero,@complemento,@bairro,@cidade,@estado)";
 
                 //2 passo - Transcribe the commands of SQL to CSharp
                 MySqlCommand sqlCmd = new MySqlCommand(cmdSql, connection);
