@@ -1,4 +1,5 @@
-﻿using ProjetosControle_De_Vendas.br.com.projetos.model;
+﻿using ProjetosControle_De_Vendas.br.com.projetos.dao;
+using ProjetosControle_De_Vendas.br.com.projetos.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +43,27 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         private void btnNovo_Click(object sender, EventArgs e)
         {
             new Helpers().LimparTela(this);
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            Fornecedores obj = new Fornecedores();
+            obj.Nome = txtNome.Text;
+            obj.CNPJ = mtbCNPJ.Text;
+            obj.Email = txtEmail.Text;
+            obj.Telefone = mtbTelefone.Text;
+            obj.Celular = mtbCelular.Text;
+            obj.CEP = mtbCEP.Text;
+            obj.Endereco = txtEndereco.Text;
+            obj.Numero = Convert.ToInt16(txtNumero.Text);
+            obj.Complemento = txtComplemento.Text;
+            obj.Bairro = txtBairro.Text;
+            obj.Cidade = txtCidade.Text;
+            obj.Estado = cbEstado.Text;
+
+            FornecedoresDAO dao = new FornecedoresDAO();
+            dao.CadastrarFornecedor(obj);
+
         }
     }
 }
