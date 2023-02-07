@@ -90,5 +90,66 @@ values(@nome,@cnpj,@email,@telefone,@celular,@endereco,@numero,@complemento,@bai
             }
         }
         #endregion
+
+        #region EditarFornecedor
+        public void EditarFornecedor(Fornecedores obj)
+        {
+            try
+            {
+                string sql = @"update from bdvendas.tb_forncedores set nome=@nome,cnpj=@cnpj,email=@email,telefone=@telefone,celular=@celular,cep=@cep,endereco=@endereco,numero=@numero
+complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@id";
+
+                MySqlCommand cmdSql = new MySqlCommand(sql, connection);
+                cmdSql.Parameters.AddWithValue("@nome", obj.Nome);
+                cmdSql.Parameters.AddWithValue("@cnpj", obj.CNPJ);
+                cmdSql.Parameters.AddWithValue("@email", obj.Email);
+                cmdSql.Parameters.AddWithValue("@telefone", obj.Telefone);
+                cmdSql.Parameters.AddWithValue("@celular", obj.Celular);
+                cmdSql.Parameters.AddWithValue("@cep", obj.CEP);
+                cmdSql.Parameters.AddWithValue("@endereco", obj.Endereco);
+                cmdSql.Parameters.AddWithValue("@numero", obj.Numero);
+                cmdSql.Parameters.AddWithValue("@complemento", obj.Complemento);
+                cmdSql.Parameters.AddWithValue("@bairro", obj.Bairro);
+                cmdSql.Parameters.AddWithValue("@cidade", obj.Cidade);
+                cmdSql.Parameters.AddWithValue("@estado", obj.Estado);
+                cmdSql.Parameters.AddWithValue("@id", obj.Codigo);
+
+                connection.Open();
+                cmdSql.ExecuteNonQuery();
+
+                MessageBox.Show($"O fornecedor {obj.Nome} for editado com sucesso!");
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro do tipo: {ex.Message} com o caminho: {ex.StackTrace}");
+            }
+        }
+        #endregion
+
+        #region ExcluirFornecedor
+        public void ExcluirFornecedor(Fornecedores obj)
+        {
+            try
+            {
+                string sql = "delete from bdvendas.tb_fornecedores where id=@id";
+
+                MySqlCommand cmdSql = new MySqlCommand(sql, connection);
+                cmdSql.Parameters.AddWithValue("@id", obj.Codigo);
+
+                connection.Open();
+                cmdSql.ExecuteNonQuery();
+
+                MessageBox.Show($"O fornecedor {obj.Nome} foi deletado com sucesso!");
+
+                connection.Clone();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro do tipo: {ex.Message} com o caminho {ex.StackTrace}");
+            }
+        }
+        #endregion
     }
 }
