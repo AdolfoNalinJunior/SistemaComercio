@@ -45,6 +45,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             new Helpers().LimparTela(this);
         }
 
+        #region BotaoSalvar
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Fornecedores obj = new Fornecedores();
@@ -64,6 +65,14 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             FornecedoresDAO dao = new FornecedoresDAO();
             dao.CadastrarFornecedor(obj);
 
+            dgListaFornecedor.DataSource = dao.ConsultarFornecedores();
+        }
+        #endregion
+
+        private void frmFornecedores_Load(object sender, EventArgs e)
+        {
+            FornecedoresDAO dao = new FornecedoresDAO();
+            dgListaFornecedor.DataSource = dao.ConsultarFornecedores();
         }
     }
 }
