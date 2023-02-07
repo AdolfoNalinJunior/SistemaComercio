@@ -19,6 +19,12 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             InitializeComponent();
         }
 
+        #region Pesquisar CEP
+        /// <summary>
+        /// método que vai realziar a pesquisa do CEP, baseado no site viacep.com.br
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPesquisarCEP_Click(object sender, EventArgs e)
         {
             try
@@ -39,6 +45,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
                 MessageBox.Show($"Endereço não encontrado. Por favor digite manualmente!");
             }
         }
+        #endregion
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
@@ -46,6 +53,11 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
 
         #region BotaoSalvar
+        /// <summary>
+        /// Evento do tipo CLICK que executa o método de salvar os Fornecedores
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Fornecedores obj = new Fornecedores();
@@ -69,10 +81,17 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
         #endregion
 
+        #region Load (tela)
+        /// <summary>
+        /// Evento load (tela), inicialização da tela
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmFornecedores_Load(object sender, EventArgs e)
         {
             FornecedoresDAO dao = new FornecedoresDAO();
             dgListaFornecedor.DataSource = dao.ConsultarFornecedores();
         }
+        #endregion
     }
 }
