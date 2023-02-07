@@ -3,7 +3,9 @@ using ProjetosControle_De_Vendas.br.com.projetos.conexao;
 using ProjetosControle_De_Vendas.br.com.projetos.model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -58,6 +60,33 @@ values(@nome,@cnpj,@email,@telefone,@celular,@endereco,@numero,@complemento,@bai
             catch (Exception ex)
             {
                 MessageBox.Show($"Aconteceu um erro! Erro do tipo: {ex.Message} com o caminho: {ex.StackTrace}");
+            }
+        }
+        #endregion
+
+        #region ConsultarFornecedores
+        public DataTable ConsultarFornecedores()
+        {
+            try
+            {
+                DataTable tabFornecedortes = new DataTable();
+                string sql = "SELECT * FROM bdvendas.tb_fornecedores";
+
+                MySqlCommand cmdSql = new MySqlCommand(sql, connection);
+
+                connection.Open();
+                cmdSql.ExecuteNonQuery();
+
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql);
+                DA.Fill(tabFornecedortes);
+
+                connection.Close();
+                return tabFornecedortes;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"A conteceu um erro de tipo: {ex.Message} com o caminho de {ex.StackTrace}");
+                return null;
             }
         }
         #endregion
