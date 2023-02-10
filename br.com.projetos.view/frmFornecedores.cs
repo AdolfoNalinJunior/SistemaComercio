@@ -1,4 +1,5 @@
-﻿using ProjetosControle_De_Vendas.br.com.projetos.dao;
+﻿using Org.BouncyCastle.Crypto.Engines;
+using ProjetosControle_De_Vendas.br.com.projetos.dao;
 using ProjetosControle_De_Vendas.br.com.projetos.model;
 using System;
 using System.Collections.Generic;
@@ -47,10 +48,12 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
         #endregion
 
+        #region tela Fornecedores
         private void btnNovo_Click(object sender, EventArgs e)
         {
             new Helpers().LimparTela(this);
         }
+        #endregion
 
         #region BotaoSalvar
         /// <summary>
@@ -91,6 +94,27 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         {
             FornecedoresDAO dao = new FornecedoresDAO();
             dgListaFornecedor.DataSource = dao.ConsultarFornecedores();
+        }
+        #endregion
+
+        #region Transferindo Valores da dgListarFornecedores para tabCadastrarFornecedores
+        private void dgListaFornecedor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtCodigo.Text = dgListaFornecedor.CurrentRow.Cells[0].Value.ToString();
+            txtNome.Text = dgListaFornecedor.CurrentRow.Cells[1].Value.ToString();
+            mtbCNPJ.Text = dgListaFornecedor.CurrentRow.Cells[2].Value.ToString();
+            txtEmail.Text = dgListaFornecedor.CurrentRow.Cells[3].Value.ToString();
+            mtbTelefone.Text = dgListaFornecedor.CurrentRow.Cells[4].Value.ToString();
+            mtbCelular.Text = dgListaFornecedor.CurrentRow.Cells[5].Value.ToString();
+            mtbCEP.Text = dgListaFornecedor.CurrentRow.Cells[6].Value.ToString();
+            txtEndereco.Text = dgListaFornecedor.CurrentRow.Cells[7].Value.ToString();
+            txtNumero.Text = dgListaFornecedor.CurrentRow.Cells[8].Value.ToString();  
+            txtComplemento.Text = dgListaFornecedor.CurrentRow.Cells[9].Value.ToString();
+            txtBairro.Text = dgListaFornecedor.CurrentRow.Cells[10].Value.ToString();
+            txtCidade.Text = dgListaFornecedor.CurrentRow.Cells[11].Value.ToString();
+            cbEstado.Text = dgListaFornecedor.CurrentRow.Cells[12].Value.ToString();
+
+            tabFornecedores.SelectedTab = tabCadastrarFonecedores;
         }
         #endregion
     }
