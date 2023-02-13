@@ -117,5 +117,43 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             tabFornecedores.SelectedTab = tabCadastrarFonecedores;
         }
         #endregion
+
+        #region btnEditar
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Fornecedores obj = new Fornecedores();
+            obj.Codigo = Convert.ToInt32(txtCodigo.Text);
+            obj.Nome = txtNome.Text;
+            obj.CNPJ = mtbCNPJ.Text;
+            obj.Email = txtEmail.Text;
+            obj.Telefone = mtbTelefone.Text;
+            obj.Celular = mtbCelular.Text;
+            obj.CEP = mtbCEP.Text;
+            obj.Endereco = txtEndereco.Text;
+            obj.Numero = Convert.ToInt32(txtNumero.Text);
+            obj.Complemento = txtComplemento.Text;
+            obj.Bairro = txtBairro.Text;
+            obj.Cidade = txtCidade.Text;
+            obj.Estado = cbEstado.Text;
+
+            FornecedoresDAO dao = new FornecedoresDAO();
+            dao.EditarFornecedor(obj);
+
+            dgListaFornecedor.DataSource = dao.ConsultarFornecedores();
+        }
+#endregion
+
+        #region btnExcluirClick
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            Fornecedores obj = new Fornecedores();
+            obj.Codigo = Convert.ToInt32(txtCodigo.Text);
+
+            FornecedoresDAO dao = new FornecedoresDAO();
+            dao.ExcluirFornecedor(obj);
+
+            dgListaFornecedor.DataSource = dao.ConsultarFornecedores();
+        }
+        #endregion
     }
 }
