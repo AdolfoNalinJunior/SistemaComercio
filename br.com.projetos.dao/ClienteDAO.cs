@@ -48,8 +48,8 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.dao
             try
             {
                 // 1 passo - define the cmd sql = insert into
-                string cmdSql = @"insert into tb_clientes (nome,rg,cpf,email,telefone,celular,endereco,numero,complemento,bairro,cidade,estado)
-values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@bairro,@cidade,@estado)";
+                string cmdSql = @"insert into tb_clientes (nome,rg,cpf,email,telefone,celular,cep,endereco,numero,complemento,bairro,cidade,estado)
+values(@nome,@rg,@cpf,@email,@telefone,@celular,@cep,@endereco,@numero,@complemento,@bairro,@cidade,@estado)";
 
                 //2 passo - Transcribe the commands of SQL to CSharp
                 MySqlCommand sqlCmd = new MySqlCommand(cmdSql, connection);
@@ -59,6 +59,7 @@ values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@
                 sqlCmd.Parameters.AddWithValue("@email", obj.Email);
                 sqlCmd.Parameters.AddWithValue("@telefone", obj.Telefone);
                 sqlCmd.Parameters.AddWithValue("@celular", obj.Celular);
+                sqlCmd.Parameters.AddWithValue("@cep", obj.CEP);
                 sqlCmd.Parameters.AddWithValue("@endereco", obj.Endereco);
                 sqlCmd.Parameters.AddWithValue("@numero", obj.Numero);
                 sqlCmd.Parameters.AddWithValue("@complemento", obj.Complemento);
@@ -71,7 +72,7 @@ values(@nome,@rg,@cpf,@email,@telefone,@celular,@endereco,@numero,@complemento,@
 
                 sqlCmd.ExecuteNonQuery(); 
 
-                MessageBox.Show($"O cliente {obj.Nome} Foi cadastrado com sucesso!");
+                MessageBox.Show($"O cliente {obj.Nome} foi cadastrado com sucesso!");
 
                 connection.Close();
             }
@@ -173,7 +174,7 @@ where id=@id";
                 string cmdSql = "delete from bdvendas.tb_clientes where id=@id";
 
                 MySqlCommand sqlCmd = new MySqlCommand(cmdSql,connection);
-                sqlCmd.Parameters.AddWithValue("@id",cliente.Codigo);
+                sqlCmd.Parameters.AddWithValue("@id", cliente.Codigo);
 
                 connection.Open();
                 sqlCmd.ExecuteNonQuery();
