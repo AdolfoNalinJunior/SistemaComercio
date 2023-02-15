@@ -31,11 +31,11 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.dao
             try
             {
                 // 1 passo - define the cmd sql = insert into
-                string cmdSql = @"insert into tb_fornecedores (nome,cnpj,email,telefone,celular,cep,endereco,numero,complemento,bairro,cidade,estado)
+                string sql = @"insert into tb_fornecedores (nome,cnpj,email,telefone,celular,cep,endereco,numero,complemento,bairro,cidade,estado)
 values(@nome,@cnpj,@email,@telefone,@celular,@cep,@endereco,@numero,@complemento,@bairro,@cidade,@estado)";
 
                 //2 passo - Transcribe the commands of SQL to CSharp
-                MySqlCommand sqlCmd = new MySqlCommand(cmdSql, connection);
+                MySqlCommand sqlCmd = new MySqlCommand(sql, connection);
                 sqlCmd.Parameters.AddWithValue("@nome", obj.Nome);
                 sqlCmd.Parameters.AddWithValue("@cnpj", obj.CNPJ);
                 sqlCmd.Parameters.AddWithValue("@email", obj.Email);
@@ -51,7 +51,6 @@ values(@nome,@cnpj,@email,@telefone,@celular,@cep,@endereco,@numero,@complemento
 
                 // 3 passo - Opening the connection and execulte the command SQL
                 this.connection.Open();
-
                 sqlCmd.ExecuteNonQuery();
 
                 MessageBox.Show($"O fornecedor {obj.Nome} foi cadastrado com sucesso!");
@@ -70,7 +69,7 @@ values(@nome,@cnpj,@email,@telefone,@celular,@cep,@endereco,@numero,@complemento
         {
             try
             {
-                DataTable tabFornecedortes = new DataTable();
+                DataTable tabFornecedoretes = new DataTable();
                 string sql = "SELECT * FROM bdvendas.tb_fornecedores";
 
                 MySqlCommand cmdSql = new MySqlCommand(sql, connection);
@@ -79,10 +78,10 @@ values(@nome,@cnpj,@email,@telefone,@celular,@cep,@endereco,@numero,@complemento
                 cmdSql.ExecuteNonQuery();
 
                 MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql);
-                DA.Fill(tabFornecedortes);
+                DA.Fill(tabFornecedoretes);
 
                 connection.Close();
-                return tabFornecedortes;
+                return tabFornecedoretes;
             }
             catch (Exception ex)
             {
@@ -92,12 +91,12 @@ values(@nome,@cnpj,@email,@telefone,@celular,@cep,@endereco,@numero,@complemento
         }
         #endregion
 
-        #region EditarFornecedor
+        #region EditarFornecedores
         public void EditarFornecedor(Fornecedores obj)
         {
             try
             {
-                string sql = @"update from bdvendas.tb_forncedores set nome=@nome,cnpj=@cnpj,email=@email,telefone=@telefone,celular=@celular,cep=@cep,endereco=@endereco,numero=@numero
+                string sql = @"update bdvendas.tb_fornecedores set nome=@nome,cnpj=@cnpj,email=@email,telefone=@telefone,celular=@celular,cep=@cep,endereco=@endereco,numero=@numero,
 complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@id";
 
                 MySqlCommand cmdSql = new MySqlCommand(sql, connection);
@@ -144,7 +143,7 @@ complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@
 
                 MessageBox.Show($"O fornecedor {obj.Nome} foi deletado com sucesso!");
 
-                connection.Clone();
+                connection.Close();
             }
             catch (Exception ex)
             {
