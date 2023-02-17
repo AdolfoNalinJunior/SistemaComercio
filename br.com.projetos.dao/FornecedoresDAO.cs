@@ -4,6 +4,7 @@ using ProjetosControle_De_Vendas.br.com.projetos.model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -181,6 +182,7 @@ complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@
         }
         #endregion
 
+        #region BusacarFornecedoresNome (txtNomeConsultar)
         public DataTable BuscarFornecedores(string nome)
         {
             try
@@ -206,5 +208,35 @@ complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@
                 return null;
             }
         }
+        #endregion
+
+        #region ListarFornecedoresNome
+        public DataTable ListarFornecedoresNome(string nome)
+        {
+            try
+            {
+                DataTable tabForncedores = new DataTable();
+                string sql = "select * from bdvendas.tb_fornecedores where nome = @nome";
+
+                MySqlCommand cmdSql = new MySqlCommand(sql, connection);
+                cmdSql.Parameters.AddWithValue("@nome", nome);
+
+                connection.Open();
+                cmdSql.ExecuteNonQuery();
+
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql);
+                DA.Fill(tabForncedores);
+
+                connection.Close();
+                return tabForncedores;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro do tipo {ex.Message} com o caminho {ex.StackTrace}");
+                return null;
+            }
+            
+        }
+        #endregion
     }
 }
