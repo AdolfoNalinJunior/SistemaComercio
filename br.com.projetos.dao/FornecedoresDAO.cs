@@ -180,5 +180,31 @@ complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@
             }
         }
         #endregion
+
+        public DataTable BuscarFornecedores(string nome)
+        {
+            try
+            {
+                DataTable tabFornecedores = new DataTable();
+                string sql = "select * from bdvendas.tb_fornecedores where nome = @nome";
+
+                MySqlCommand cmdSql = new MySqlCommand(sql, connection);
+                cmdSql.Parameters.AddWithValue("@nome", nome);
+
+                connection.Open();
+                cmdSql.ExecuteNonQuery();
+
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql);
+                DA.Fill(tabFornecedores);
+
+                connection.Close();
+                return tabFornecedores;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um Erro do tipo {ex.Message} com o caminho {ex.StackTrace}");
+                return null;
+            }
+        }
     }
 }
