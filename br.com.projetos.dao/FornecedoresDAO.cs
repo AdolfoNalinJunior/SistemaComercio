@@ -15,7 +15,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.dao
 {
     public class FornecedoresDAO
     {
-        #region AtributosClasse
+        #region Connection
         private MySqlConnection connection;
         #endregion
 
@@ -153,35 +153,6 @@ complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@
         }
         #endregion
 
-        #region ConsultarFornecedoresNome
-        public DataTable ConsultarFornecedoresNome(string nome)
-        {
-            try
-            {
-                DataTable tabFornecedores = new DataTable();
-                string sql = "select * from bdvendas.tb_fornecedores where nome like nome = @nome";
-
-                MySqlCommand cmdSql = new MySqlCommand(sql,connection);
-                cmdSql.Parameters.AddWithValue("@nome", nome);
-
-                connection.Open();
-                cmdSql.ExecuteNonQuery();
-
-                MySqlDataAdapter DA = new MySqlDataAdapter(cmdSql);
-                DA.Fill(tabFornecedores);
-
-                connection.Close();
-
-                return tabFornecedores;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Aconteceu um erro do tipo: {ex.Message}  com o caminho {ex.StackTrace}");
-                return null;
-            }
-        }
-        #endregion
-
         #region BusacarFornecedoresNome (txtNomeConsultar)
         public DataTable BuscarFornecedores(string nome)
         {
@@ -216,7 +187,7 @@ complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@
             try
             {
                 DataTable tabForncedores = new DataTable();
-                string sql = "select * from bdvendas.tb_fornecedores where nome = @nome";
+                string sql = "SELECT * FROM bdvendas.tb_fornecedores where nome like @nome;";
 
                 MySqlCommand cmdSql = new MySqlCommand(sql, connection);
                 cmdSql.Parameters.AddWithValue("@nome", nome);
