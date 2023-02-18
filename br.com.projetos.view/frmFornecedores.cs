@@ -141,7 +141,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
 
             dgListaFornecedor.DataSource = dao.ConsultarFornecedores();
         }
-#endregion
+        #endregion
 
         #region btnExcluirClick
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -153,6 +153,37 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             dao.ExcluirFornecedor(obj);
 
             dgListaFornecedor.DataSource = dao.ConsultarFornecedores();
+        }
+        #endregion
+
+        #region KeyPress event
+        private void txtNomeConsulta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string nome = '%' + txtNomeConsulta.Text + '%';
+
+            FornecedoresDAO obj = new FornecedoresDAO();
+            dgListaFornecedor.DataSource = obj.ListarFornecedoresNome(nome);    
+            
+            if (dgListaFornecedor.Rows.Count == 0 || txtNomeConsulta.Text == String.Empty)
+            {
+                dgListaFornecedor.DataSource = obj.ConsultarFornecedores();
+            }
+        }
+        #endregion
+
+        #region btnPesquisar
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            string nome = txtNomeConsulta.Text;
+
+            FornecedoresDAO obj = new FornecedoresDAO();
+            dgListaFornecedor.DataSource = obj.BuscarFornecedores(nome);
+
+            if (dgListaFornecedor.Rows.Count == 0 || txtNomeConsulta.Text == String.Empty)
+            {
+                MessageBox.Show($"Fornecedor como nome {txtNomeConsulta.Text} não foi encontrado, porfavor verifique se o nome está correto ou se o forncedor existe no banco de dados");
+                dgListaFornecedor.DataSource = obj.ConsultarFornecedores();
+            }
         }
         #endregion
     }
