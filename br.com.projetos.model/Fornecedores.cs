@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProjetosControle_De_Vendas.br.com.projetos.model
 {
-    internal class Fornecedores
+    public class Fornecedores : Clientes
     {
+        public string CNPJ{ get; set; }
     }
 }
