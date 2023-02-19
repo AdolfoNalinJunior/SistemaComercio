@@ -55,7 +55,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
         #endregion
 
-        #region
+        #region Load (tela)
         private void frmFuncionario_Load(object sender, EventArgs e)
         {
             FuncionarioDAO objDao = new FuncionarioDAO();
@@ -148,9 +148,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
         #endregion
 
-        
-
-        #region
+        #region btnPesquisarCEP_Click
         private void btnPesquisarCEP_Click(object sender, EventArgs e)
         {
             try
@@ -173,6 +171,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
         #endregion
 
+        #region txtNomeCunsulta_KeyPress
         private void txtNomeConsulta_KeyPress(object sender, KeyPressEventArgs e)
         {
             string nome = '%' + txtNomeConsulta.Text + '%';
@@ -185,5 +184,6 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
                 dgListaFuncionario.DataSource = dao.ConsultarFuncionario();
             }
         }
+        #endregion
     }
 }
