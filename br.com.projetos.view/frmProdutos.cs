@@ -1,4 +1,5 @@
 ﻿using ProjetosControle_De_Vendas.br.com.projetos.dao;
+using ProjetosControle_De_Vendas.br.com.projetos.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,20 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             cbFornecedor.DataSource = f_dao.ConsultarFornecedores();
             cbFornecedor.DisplayMember = "nome";
             cbFornecedor.ValueMember = "id";
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            Produtos obj = new Produtos();
+            obj.Descricao = txtDescricao.Text;
+            obj.Preco = decimal.Parse(txtValor.Text);
+            obj.Estoque = Convert.ToInt32(txtEstoque.Text);
+            obj.CodigoFornecedor = Convert.ToInt32(cbFornecedor.SelectedValue.ToString());
+
+            ProdutosDAO dao = new ProdutosDAO();
+            dao.CadastrarProdutos(obj);
+
+            //dgListaProdutos.DataSource = dao.ConsultarProdutos();
         }
     }
 }
