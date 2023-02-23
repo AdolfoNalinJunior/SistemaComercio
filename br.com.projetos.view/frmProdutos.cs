@@ -40,6 +40,8 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             dao.CadastrarProdutos(obj);
 
             //dgListaProdutos.DataSource = dao.ConsultarProdutos();
+
+            new Helpers().LimparTela(this);
         }
     }
 }
