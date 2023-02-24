@@ -20,6 +20,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             InitializeComponent();
         }
 
+        #region Load (tela)
         private void frmProdutos_Load(object sender, EventArgs e)
         {
             FornecedoresDAO f_dao = new FornecedoresDAO();
@@ -27,7 +28,9 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             cbFornecedor.DisplayMember = "nome";
             cbFornecedor.ValueMember = "id";
         }
+        #endregion
 
+        #region btnSalvar
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Produtos obj = new Produtos();
@@ -43,5 +46,6 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
 
             new Helpers().LimparTela(this);
         }
+        #endregion
     }
 }
