@@ -56,5 +56,16 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         {
             new Helpers().LimparTela(this);
         }
+
+        private void dgListaProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtCodigo.Text = dgListaProdutos.CurrentRow.Cells[0].Value.ToString(); 
+            txtDescricao.Text = dgListaProdutos.CurrentRow.Cells[1].Value.ToString(); 
+            txtValor.Text = dgListaProdutos.CurrentRow.Cells[2].Value.ToString(); 
+            txtEstoque.Text = dgListaProdutos.CurrentRow.Cells[3].Value.ToString(); 
+            cbFornecedor.Text = dgListaProdutos.CurrentRow.Cells[4].Value.ToString();
+
+            tabFornecedores.SelectedTab = tabCadastrarProdutos;
+        }
     }
 }
