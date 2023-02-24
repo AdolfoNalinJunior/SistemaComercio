@@ -27,6 +27,10 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             cbFornecedor.DataSource = f_dao.ConsultarFornecedores();
             cbFornecedor.DisplayMember = "nome";
             cbFornecedor.ValueMember = "id";
+
+            ProdutosDAO obj = new ProdutosDAO();
+
+            dgListaProdutos.DataSource = obj.ConsultarProdutos();
         }
         #endregion
 
