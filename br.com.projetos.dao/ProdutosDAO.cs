@@ -52,5 +52,33 @@ values(@descricao,@preco,@qtd_estoque,@for_id)";
             }
         }
         #endregion
+
+        #region ConsultarProdutos
+        public DataTable ConsultarProdutos()
+        {
+            try
+            {
+                DataTable tabProduto = new DataTable();
+
+                string sql = "select * from bdvendas.tb_produtos";
+
+                MySqlCommand cmd = new MySqlCommand( sql,connection);
+                
+                connection.Open();
+                cmd.ExecuteNonQuery();
+
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmd);
+                DA.Fill(tabProduto);
+
+                connection.Close();  
+                return tabProduto;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro do tipo: {ex.Message} com o caminho: {ex.StackTrace}");
+                return null;
+            }
+        }
+        #endregion
     }
 }
