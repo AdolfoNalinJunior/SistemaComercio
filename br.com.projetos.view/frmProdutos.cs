@@ -51,5 +51,10 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             new Helpers().LimparTela(this);
         }
         #endregion
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            new Helpers().LimparTela(this);
+        }
     }
 }
