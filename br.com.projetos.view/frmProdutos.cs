@@ -52,11 +52,14 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
         #endregion
 
+        #region btnNovo
         private void btnNovo_Click(object sender, EventArgs e)
         {
             new Helpers().LimparTela(this);
         }
+        #endregion
 
+        #region dgListarProdutos
         private void dgListaProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtCodigo.Text = dgListaProdutos.CurrentRow.Cells[0].Value.ToString(); 
@@ -67,5 +70,37 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
 
             tabFornecedores.SelectedTab = tabCadastrarProdutos;
         }
+        #endregion
+
+        #region btnEditarProduto
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Produtos obj = new Produtos();
+            obj.Descricao = txtDescricao.Text;
+            obj.Preco = decimal.Parse(txtValor.Text);
+            obj.Estoque = int.Parse(txtEstoque.Text);
+            obj.CodigoFornecedor = int.Parse(cbFornecedor.SelectedValue.ToString());
+            obj.Codigo = int.Parse(txtCodigo.Text);
+
+            ProdutosDAO dao = new ProdutosDAO();
+            dao.EditarProduto(obj);
+
+            dgListaProdutos.DataSource = dao.ConsultarProdutos();
+        }
+
+        #endregion
+
+        #region btnExcluir
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            Produtos obj = new Produtos();
+            obj.Codigo = Convert.ToInt32(txtCodigo.Text);
+
+            ProdutosDAO dao = new ProdutosDAO();
+            dao.ExcluirProduto(obj);
+
+            dgListaProdutos.DataSource = dao.ConsultarProdutos();
+        }
+        #endregion
     }
 }
