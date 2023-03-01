@@ -60,7 +60,13 @@ values(@descricao,@preco,@qtd_estoque,@for_id)";
             {
                 DataTable tabProduto = new DataTable();
 
-                string sql = "select * from bdvendas.tb_produtos";
+                string sql = @"select  p.id as 'Código',
+                                p.descricao as 'Descrição',
+                                p.preco as 'Preço',
+                                p.qtd_estoque as 'Quantidade Estoque',
+                                f.nome as 'Fornecedores' 
+                                from bdvendas.tb_produtos as p join bdvendas.tb_fornecedores as f
+                                on (p.for_id = f.id)";
 
                 MySqlCommand cmd = new MySqlCommand( sql,connection);
                 
@@ -77,6 +83,67 @@ values(@descricao,@preco,@qtd_estoque,@for_id)";
             {
                 MessageBox.Show($"Aconteceu um erro do tipo: {ex.Message} com o caminho: {ex.StackTrace}");
                 return null;
+            }
+        }
+        #endregion
+
+        #region EditarProduto
+        public void EditarProduto(Produtos obj)
+        {
+            try
+            {
+
+                string sql = "update bdvendas.tb_produtos set descricao=@descricao,preco=@preco,qtd_estoque=@qtd_estoque,for_id=@for_id where id=@id";
+
+                MySqlCommand cmd = new MySqlCommand(sql,connection);
+                
+                cmd.Parameters.AddWithValue("@descricao", obj.Descricao);
+                cmd.Parameters.AddWithValue("@preco", obj.Preco);
+                cmd.Parameters.AddWithValue("@qtd_estoque", obj.Estoque);
+                cmd.Parameters.AddWithValue("@for_id", obj.CodigoFornecedor);
+                cmd.Parameters.AddWithValue("@id", obj.Codigo);
+
+                MessageBox.Show(obj.Descricao);
+                MessageBox.Show(obj.Preco.ToString());
+                MessageBox.Show(obj.Estoque.ToString());
+                MessageBox.Show(obj.CodigoFornecedor.ToString());
+
+                connection.Open();
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show($"O produto {obj.Descricao} foi editado com sucesso!");
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro do tipo: {ex.Message} com o caminnho para {ex.StackTrace}");
+            }
+            
+        }
+        #endregion
+
+        #region ExcluirProduto
+        public void ExcluirProduto(Produtos obj)
+        {
+            try
+            {
+                string sql = "delete from bdvendas.tb_produtos where id = @id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                cmd.Parameters.AddWithValue("@id", obj.Codigo);
+
+                connection.Open();
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Produto foi excluido com sucesso!");
+
+                connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro do tipo {ex.Message} com o caminho para {ex.StackTrace}");
             }
         }
         #endregion
