@@ -147,5 +147,62 @@ values(@descricao,@preco,@qtd_estoque,@for_id)";
             }
         }
         #endregion
+
+        #region BuscarNome
+        public DataTable BuscarProduto(string nome)
+        {
+            try
+            {
+                DataTable tabProdutos = new DataTable();
+                string sql = "select * from bdvendas.tb_produtos where descricao = @descricao";
+
+                MySqlCommand cmd = new MySqlCommand( sql, connection);
+                cmd.Parameters.AddWithValue("@descricao", nome);
+
+                connection.Open();
+                cmd.ExecuteNonQuery();
+
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmd);
+                DA.Fill(tabProdutos);
+
+                connection.Close();
+
+                return tabProdutos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro do tipo {ex.Message} com o caminho para {ex.StackTrace}");
+                return null;
+            }
+        }
+        #endregion
+
+        #region ListarProdutoNome
+        public DataTable ListarProdutoNome(string nome)
+        {
+            try
+            {
+                DataTable tabProdutos = new DataTable();
+                string sql = "select * from bdvendas.tb_produtos where descricao like @descricao";
+
+                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                cmd.Parameters.AddWithValue("@descricao", nome);
+
+                connection.Open();
+                cmd.ExecuteNonQuery();
+
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmd);
+                DA.Fill(tabProdutos);
+
+                connection.Close();
+                return tabProdutos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro do tipo {ex.Message} como caminho {ex.StackTrace}");
+                return null;
+            }
+        }
+        #endregion
     }
 }
