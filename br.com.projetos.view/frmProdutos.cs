@@ -1,4 +1,6 @@
-﻿using ProjetosControle_De_Vendas.br.com.projetos.dao;
+﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Crypto;
+using ProjetosControle_De_Vendas.br.com.projetos.dao;
 using ProjetosControle_De_Vendas.br.com.projetos.model;
 using System;
 using System.Collections.Generic;
@@ -46,7 +48,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             ProdutosDAO dao = new ProdutosDAO();
             dao.CadastrarProdutos(obj);
 
-            //dgListaProdutos.DataSource = dao.ConsultarProdutos();
+            dgListaProdutos.DataSource = dao.ConsultarProdutos();
 
             new Helpers().LimparTela(this);
         }
@@ -100,6 +102,36 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             dao.ExcluirProduto(obj);
 
             dgListaProdutos.DataSource = dao.ConsultarProdutos();
+        }
+        #endregion
+
+        #region txtNomeConsultar_KeyPress
+        private void txtNomeConsulta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string descricao = "%" + txtNomeConsulta.Text + "%";
+
+            ProdutosDAO dao = new ProdutosDAO();
+            dgListaProdutos.DataSource = dao.ListarProdutoNome(descricao);
+
+            if (dgListaProdutos.Rows.Count == 0 || txtNomeConsulta.Text == String.Empty)
+            {
+                dgListaProdutos.DataSource = dao.ConsultarProdutos();
+            }
+        }
+        #endregion
+
+        #region btnPesquisa_Click
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            string descricao = txtNomeConsulta.Text;
+
+            ProdutosDAO dao = new ProdutosDAO();
+            dgListaProdutos.DataSource = dao.BuscarProduto(descricao);
+
+            if(dgListaProdutos.Rows.Count == 0 || txtNomeConsulta.Text== String.Empty)
+            {
+                dgListaProdutos.DataSource = dao.ConsultarProdutos();
+            }
         }
         #endregion
     }
