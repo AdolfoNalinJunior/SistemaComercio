@@ -103,11 +103,6 @@ values(@descricao,@preco,@qtd_estoque,@for_id)";
                 cmd.Parameters.AddWithValue("@for_id", obj.CodigoFornecedor);
                 cmd.Parameters.AddWithValue("@id", obj.Codigo);
 
-                MessageBox.Show(obj.Descricao);
-                MessageBox.Show(obj.Preco.ToString());
-                MessageBox.Show(obj.Estoque.ToString());
-                MessageBox.Show(obj.CodigoFornecedor.ToString());
-
                 connection.Open();
                 cmd.ExecuteNonQuery();
 
@@ -200,6 +195,45 @@ values(@descricao,@preco,@qtd_estoque,@for_id)";
             catch (Exception ex)
             {
                 MessageBox.Show($"Aconteceu um erro do tipo {ex.Message} como caminho {ex.StackTrace}");
+                return null;
+            }
+        }
+        #endregion
+
+        #region BuscarProdutoVenda
+        public Produtos BuscarProdutoVenda(int id)
+        {
+            try
+            {
+                Produtos obj = new Produtos();
+                string sql = "select * from bdvendas.tb_produtos where id = @id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                connection.Open();
+
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    obj.Codigo = dr.GetInt32("id");
+                    obj.Descricao = dr.GetString("descricao");
+                    obj.Preco = dr.GetDecimal("preco");
+                    obj.Estoque = dr.GetInt32("qtd_estoque");
+
+                    connection.Close();
+                    return obj;
+                }
+                else
+                {
+                    MessageBox.Show($"Por favor digite um código válido!");
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconteceu um erro do tipo {ex.Message} com o caminho {ex.StackTrace}");
                 return null;
             }
         }
