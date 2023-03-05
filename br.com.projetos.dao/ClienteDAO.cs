@@ -1,4 +1,5 @@
-﻿using Microsoft.SqlServer.Server;
+﻿using K4os.Compression.LZ4.Streams;
+using Microsoft.SqlServer.Server;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Bcpg;
 using ProjetosControle_De_Vendas.br.com.projetos.conexao;
@@ -251,6 +252,48 @@ where id=@id";
             catch (Exception ex)
             {
                 MessageBox.Show($"Aconteceu um erro: {ex.StackTrace} {ex.Message}");
+                return null;
+            }
+        }
+        #endregion
+
+        #region BuscarClienteVendas
+        /// <summary>
+        /// Função que trás os dados do cliente para o load venda
+        /// </summary>
+        /// <param name="cpf">Parametro de busca CPF</param>
+        /// <returns></returns>
+        public Clientes BuscarClienteVendas(string cpf)
+        {
+            try
+            {
+                Clientes obj = new Clientes();
+                string sql = "select * from bdvendas.tb_clientes where cpf = @cpf";
+
+                MySqlCommand cmd = new MySqlCommand( sql, connection);
+                cmd.Parameters.AddWithValue("@cpf", cpf);
+
+                connection.Open();
+                
+                MySqlDataReader rs = cmd.ExecuteReader();
+                if (rs.Read())
+                {
+                    obj.Codigo = rs.GetInt32("id");
+                    obj.Nome = rs.GetString("nome");
+                    connection.Close();
+                    return obj;
+                }
+                else
+                {
+                    connection.Close();
+                    MessageBox.Show("Cliente não encontrado, por favor digite um CPF válido!");
+                    return null;
+                }
+
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show($"Aconteceu um erro do tipo {ex.Message} com o caminho para {ex.StackTrace}");
                 return null;
             }
         }
