@@ -21,9 +21,14 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
 
         #region Variaveis da classe
         int quantidade = 0;
+        int quantidadeTotal = 0;
         decimal preco = 0;
         decimal subtotal = 0;
         decimal total = 0;
+        #endregion
+
+        #region Carrinho  
+        DataTable carrinho = new DataTable();
         #endregion
 
         #region mtbCPF_KeyPress
@@ -58,9 +63,9 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         }
         #endregion
 
+        #region Load
         private void frmVendas_Load(object sender, EventArgs e)
         {
-            DataTable carrinho = new DataTable();
             carrinho.Columns.Add("Código", typeof(int));
             carrinho.Columns.Add("Produto", typeof(string));
             carrinho.Columns.Add("Quantidade", typeof(int));
@@ -69,5 +74,38 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
 
             dgCarrinho.DataSource = carrinho;
         }
+        #endregion
+
+        #region btnAddProduto_Click
+        private void btnAddProduto_Click(object sender, EventArgs e)
+        {
+            quantidade = int.Parse(txtQuantidade.Text);
+            preco = decimal.Parse(txtValor.Text);
+            subtotal = quantidade * preco;
+
+            if (preco == 0 || quantidade == 0)
+            {
+                MessageBox.Show("O valor da quantidade e do valor precisa ser maior que 0");
+            }
+            else
+            {
+                total += subtotal;
+                txtTotalValor.Text = total.ToString();
+
+                quantidadeTotal += quantidade;
+                txtTotalItens.Text = quantidadeTotal.ToString();
+            }
+
+            carrinho.Rows.Add(int.Parse(txtCodigo.Text), txtDescricao.Text, quantidade, preco, subtotal);
+
+            txtCodigo.Clear();
+            txtDescricao.Clear();
+            txtQuantidade.Clear();
+            txtEstoque.Clear();
+            txtValor.Clear();
+            
+            txtCodigo.Focus();
+        }
+        #endregion
     }
 }
