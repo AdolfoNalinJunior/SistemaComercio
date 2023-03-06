@@ -19,6 +19,13 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             InitializeComponent();
         }
 
+        #region Variaveis da classe
+        int quantidade = 0;
+        decimal preco = 0;
+        decimal subtotal = 0;
+        decimal total = 0;
+        #endregion
+
         #region mtbCPF_KeyPress
         private void mtbCPF_KeyPress(object sender, KeyPressEventArgs e)
         {
