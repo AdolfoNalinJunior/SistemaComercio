@@ -57,5 +57,17 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             }
         }
         #endregion
+
+        private void frmVendas_Load(object sender, EventArgs e)
+        {
+            DataTable carrinho = new DataTable();
+            carrinho.Columns.Add("Código", typeof(int));
+            carrinho.Columns.Add("Produto", typeof(string));
+            carrinho.Columns.Add("Quantidade", typeof(int));
+            carrinho.Columns.Add("Preço", typeof (decimal));
+            carrinho.Columns.Add("SubTotal", typeof(decimal));
+
+            dgCarrinho.DataSource = carrinho;
+        }
     }
 }
