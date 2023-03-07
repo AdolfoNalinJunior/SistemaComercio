@@ -107,5 +107,29 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             txtCodigo.Focus();
         }
         #endregion
+
+        #region RmProdutoVenda
+        private void btnRmProduto_Click(object sender, EventArgs e)
+        {
+            decimal subProduto = decimal.Parse(dgCarrinho.CurrentRow.Cells[4].Value.ToString());
+            /*
+             * A variável está selecionando o valor de subtotal da linha selecionada
+             * Para conseguir manipular no evento btnRmProduto_Click
+             */
+
+            int indice = dgCarrinho.CurrentRow.Index;
+
+            DataRow linha = carrinho.Rows[indice];
+
+            carrinho.Rows.Remove(linha);
+            carrinho.AcceptChanges();
+            
+            total -= subProduto;
+
+            txtTotalValor.Text = total.ToString();
+
+            MessageBox.Show("Item removido do carrinho com sucesso!");
+        }
+        #endregion
     }
 }
