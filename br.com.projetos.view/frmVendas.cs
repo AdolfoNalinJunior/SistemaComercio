@@ -27,7 +27,8 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         decimal total = 0;
         #endregion
 
-        #region Carrinho  
+        #region Objs
+        Clientes clientes = new Clientes();
         DataTable carrinho = new DataTable();
         #endregion
 
@@ -79,32 +80,34 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         #region btnAddProduto_Click
         private void btnAddProduto_Click(object sender, EventArgs e)
         {
-            quantidade = int.Parse(txtQuantidade.Text);
-            preco = decimal.Parse(txtValor.Text);
-            subtotal = quantidade * preco;
+            try
+            {
+                quantidade = int.Parse(txtQuantidade.Text);
+                preco = decimal.Parse(txtValor.Text);
+                subtotal = quantidade * preco;
 
-            if (preco == 0 || quantidade == 0)
-            {
-                MessageBox.Show("O valor da quantidade e do valor precisa ser maior que 0");
-            }
-            else
-            {
+               
                 total += subtotal;
                 txtTotalValor.Text = total.ToString();
 
                 quantidadeTotal += quantidade;
                 txtTotalItens.Text = quantidadeTotal.ToString();
+
+                carrinho.Rows.Add(int.Parse(txtCodigo.Text), txtDescricao.Text, quantidade, preco, subtotal);
+
+                txtCodigo.Clear();
+                txtDescricao.Clear();
+                txtQuantidade.Clear();
+                txtEstoque.Clear();
+                txtValor.Clear();
+
+                txtCodigo.Focus();
             }
-
-            carrinho.Rows.Add(int.Parse(txtCodigo.Text), txtDescricao.Text, quantidade, preco, subtotal);
-
-            txtCodigo.Clear();
-            txtDescricao.Clear();
-            txtQuantidade.Clear();
-            txtEstoque.Clear();
-            txtValor.Clear();
-            
-            txtCodigo.Focus();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Por favor digite um código válido, ou verifique se existe uma quantidade do prudoto desejado");
+                MessageBox.Show($"Aconteceu um erro do tipo {ex.Message} com o caminho {ex.StackTrace}");
+            }
         }
         #endregion
 
@@ -129,6 +132,15 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             txtTotalValor.Text = total.ToString();
 
             MessageBox.Show("Item removido do carrinho com sucesso!");
+        }
+        #endregion
+
+        #region btnPagamentos_Click
+        private void btnPagamento_Click(object sender, EventArgs e)
+        {
+            frmPagamentos tela = new frmPagamentos(clientes, carrinho);
+            tela.txtTotal.Text = txtTotalValor.Text.ToString();
+            tela.ShowDialog();
         }
         #endregion
     }
