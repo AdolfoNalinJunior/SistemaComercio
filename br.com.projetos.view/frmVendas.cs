@@ -74,6 +74,10 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
             carrinho.Columns.Add("SubTotal", typeof(decimal));
 
             dgCarrinho.DataSource = carrinho;
+
+            // Configuração da data
+            mtbData. Text = DateTime.Now.ToShortDateString();
+            mtbHora.Text = DateTime.Now.ToShortTimeString();
         }
         #endregion
 
