@@ -142,7 +142,10 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         #region btnPagamentos_Click
         private void btnPagamento_Click(object sender, EventArgs e)
         {
-            frmPagamentos tela = new frmPagamentos(clientes, carrinho);
+            DateTime data = DateTime.Parse(mtbData.Text);
+            DateTime hora = DateTime.Parse(mtbHora.Text);
+
+            frmPagamentos tela = new frmPagamentos(clientes, carrinho, data, hora);
             tela.txtTotal.Text = txtTotalValor.Text.ToString();
             tela.ShowDialog();
         }
