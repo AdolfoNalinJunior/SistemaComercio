@@ -27,6 +27,10 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.dao
         #endregion
 
         #region CadastrarFonecedor
+        /// <summary>
+        /// Cadastra o fornecedor desejado nop banco de dados
+        /// </summary>
+        /// <param name="obj">Fornecedor que deseja ser casdastrado</param>
         public void CadastrarFornecedor(Fornecedores obj)
         {
             try
@@ -66,6 +70,10 @@ values(@nome,@cnpj,@email,@telefone,@celular,@cep,@endereco,@numero,@complemento
         #endregion
 
         #region ConsultarFornecedores
+        /// <summary>
+        /// Realiza um consulta no banco de dados
+        /// </summary>
+        /// <returns>Os resultados para um DataTable</returns>
         public DataTable ConsultarFornecedores()
         {
             try
@@ -93,6 +101,10 @@ values(@nome,@cnpj,@email,@telefone,@celular,@cep,@endereco,@numero,@complemento
         #endregion
 
         #region EditarFornecedores
+        /// <summary>
+        /// Edita os dados dos fonecedores
+        /// </summary>
+        /// <param name="obj">Fornecedores que deseja ser editado</param>
         public void EditarFornecedor(Fornecedores obj)
         {
             try
@@ -130,6 +142,10 @@ complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@
         #endregion
 
         #region ExcluirFornecedor
+        /// <summary>
+        /// Exclui os fornecedores do banco de dados
+        /// </summary>
+        /// <param name="obj">Forncedor que deseja ser excluido</param>
         public void ExcluirFornecedor(Fornecedores obj)
         {
             try
@@ -154,6 +170,11 @@ complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@
         #endregion
 
         #region BusacarFornecedoresNome (txtNomeConsultar)
+        /// <summary>
+        /// Busca os fornecedores pelo nome correto
+        /// </summary>
+        /// <param name="nome">Fornecedores que vai ser perquisado</param>
+        /// <returns></returns>
         public DataTable BuscarFornecedores(string nome)
         {
             try
@@ -182,6 +203,11 @@ complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado where id=@
         #endregion
 
         #region ListarFornecedoresNome
+        /// <summary>
+        /// Listar os fornecedores de acordo com o que o usuários digita
+        /// </summary>
+        /// <param name="nome">Nome do fornecedor</param>
+        /// <returns></returns>
         public DataTable ListarFornecedoresNome(string nome)
         {
             try
