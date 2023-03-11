@@ -19,7 +19,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.dao
     {
         #region Connection
         /// <summary>
-        /// Atributo privado de conexão da classe
+        /// Campo da classe
         /// </summary>
         private MySqlConnection connection;
         #endregion
@@ -38,7 +38,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.dao
         /// <summary>
         /// cadastro de <paramref name="funcionario"/> no banco de dados
         /// </summary>
-        /// <param name="funcionario"></param>
+        /// <param name="funcionario">Obejto que vai ser cadastrado na tabelas Funcionarios</param>
         public void CadastrarFuncionario(Funcionario funcionario)
         {
             try
@@ -84,6 +84,10 @@ values (@nome,@rg,@cpf,@email,@senha,@cargo,@nivel_acesso,@telefone,@celular,@ce
         #endregion
 
         #region ConsultarFuncionario
+        /// <summary>
+        /// Consulta a tabela de funcionarios e exibi
+        /// </summary>
+        /// <returns>Os dados da tabela fonecedores para DataTable</returns>
         public DataTable ConsultarFuncionario()
         {
             try
@@ -116,6 +120,11 @@ values (@nome,@rg,@cpf,@email,@senha,@cargo,@nivel_acesso,@telefone,@celular,@ce
         #endregion
 
         #region BuscaFuncionarioNome
+        /// <summary>
+        /// Busca o objeto com o nome correto
+        /// </summary>
+        /// <param name="nome">Nome do objetos</param>
+        /// <returns></returns>
         public DataTable BuscarFuncionarioNome(string nome)
         {
             try
@@ -149,6 +158,10 @@ values (@nome,@rg,@cpf,@email,@senha,@cargo,@nivel_acesso,@telefone,@celular,@ce
         #endregion
 
         #region EditarFuncionario
+        /// <summary>
+        /// Edita os dados do objetos na tabela
+        /// </summary>
+        /// <param name="obj">Nome do obejto</param>
         public void EditarFuncionario(Funcionario obj)
         {
             try
@@ -190,6 +203,10 @@ endereco=@endereco,numero=@numero,complemento=@complemento,bairro=@bairro,cidade
         #endregion
 
         #region ExcluirFuncionario
+        /// <summary>
+        /// Exclui o objeto 
+        /// </summary>
+        /// <param name="obj">Nome do objeto</param>
         public void ExcluirFuncionario(Funcionario obj)
         {
             try
@@ -214,6 +231,11 @@ endereco=@endereco,numero=@numero,complemento=@complemento,bairro=@bairro,cidade
         #endregion
 
         #region ListarFuncionariosNome
+        /// <summary>
+        /// Lista os obejtos de acordo com que o usuário digita
+        /// </summary>
+        /// <param name="nome">Nome do obejto </param>
+        /// <returns></returns>
         public DataTable ListarFuncionariosNome(string nome)
         {
             try
@@ -244,8 +266,6 @@ endereco=@endereco,numero=@numero,complemento=@complemento,bairro=@bairro,cidade
                 return null;
             }
         }
-
-
         #endregion
     }
 }
