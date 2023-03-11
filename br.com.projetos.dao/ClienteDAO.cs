@@ -193,6 +193,11 @@ where id=@id";
         #endregion
 
         #region BuscarClienteNome
+        /// <summary>
+        /// Busca o cliente por nome devidamente CORRETO
+        /// </summary>
+        /// <param name="nome">Nome do Cliente que vai ser pesquisado</param>
+        /// <returns>Todos os valores com o parametro desejado</returns>
         public DataTable BuscarClienteNome(string nome)
         {
             try
@@ -226,6 +231,11 @@ where id=@id";
         #endregion
 
         #region ListarClienteNome
+        /// <summary>
+        /// Lista os clientes de acordo que o usuário digita
+        /// </summary>
+        /// <param name="nome">Nome do cliente desajado</param>
+        /// <returns>Os nomes encontrados com os valores digitados</returns>
         public DataTable ListarClienteNome(string nome)
         {
             try
