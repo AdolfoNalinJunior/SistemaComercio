@@ -55,7 +55,7 @@ values (@cliente_id, @data_venda, @total_venda, @observacoes)";
         /// <summary>
         /// Retorna o ultimo id, ou seja, a ultima venda que foi feita
         /// </summary>
-        /// <returns></returns>
+        /// <returns>O id da venda</returns>
         public int ultimaVenda()
         {
             try
