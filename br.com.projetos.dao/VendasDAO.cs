@@ -52,6 +52,10 @@ values (@cliente_id, @data_venda, @total_venda, @observacoes)";
         #endregion
 
         #region UltimaVenda
+        /// <summary>
+        /// Retorna o ultimo id, ou seja, a ultima venda que foi feita
+        /// </summary>
+        /// <returns></returns>
         public int ultimaVenda()
         {
             try
