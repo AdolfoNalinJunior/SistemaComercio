@@ -50,5 +50,34 @@ values (@cliente_id, @data_venda, @total_venda, @observacoes)";
             }
         }
         #endregion
+
+        #region UltimaVenda
+        public int ultimaVenda()
+        {
+            try
+            {
+                int idvenda = 0;
+
+                string sql = "select max(id) id from tb_vendas";
+
+                MySqlCommand cmd = new MySqlCommand(sql, connectio );
+
+                connectio.Open();
+
+                MySqlDataReader DR = cmd.ExecuteReader();
+                if(DR.Read())
+                {
+                    idvenda = DR.GetInt32("id");
+                    connectio.Close();
+                }
+                return idvenda;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aconeteceu um erro do tipo {ex.Message} com o caminho {ex.StackTrace}");
+                return 0;
+            }
+        }
+        #endregion
     }
 }
