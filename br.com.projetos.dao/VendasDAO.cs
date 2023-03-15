@@ -29,18 +29,18 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.dao
             try
             {
                 string sql = @"insert into bdvendas.tb_vendas (cliente_id, data_venda, total_venda, observacoes)
-values (@cliente_id, @data_venda, @total_venda, @observacoes)";
+values (@cliente_id, @data_venda, @total_vendas, @observacoes)";
 
                 MySqlCommand cmd = new MySqlCommand(sql, connectio);
                 cmd.Parameters.AddWithValue("@cliente_id", obj.CodigoCliente);
                 cmd.Parameters.AddWithValue("@data_venda", obj.Data);
                 cmd.Parameters.AddWithValue("@total_vendas", obj.TotalVenda);
-                cmd.Parameters.AddWithValue("@observacoes", obj.Observacao);  
+                cmd.Parameters.AddWithValue("@observacoes", obj.Observacao);
 
                 connectio.Open();
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show($"Venda {obj.Codigo} foi realizada com sucesso!");
+                MessageBox.Show($"A venda foi realizada com sucesso!");
 
                 connectio.Close();
             }
