@@ -20,8 +20,8 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         Clientes obj = new Clientes();
         DataTable carrinho = new DataTable();
         Vendas vendas = new Vendas();
-        DateTime dataAtual;
-        DateTime horaAtual;
+        DateTime dataAtual = DateTime.Parse(DateTime.Now.ToLongDateString());
+        DateTime horaAtual = DateTime.Parse(DateTime.Now.ToLongTimeString());
         #endregion
 
         #region ConstrutorParametros
@@ -68,11 +68,30 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
                     Vendas vendas = new Vendas();
                     vendas.CodigoCliente = obj.Codigo;
                     vendas.Data = dataAtual;
+                    vendas.Hora = dataAtual;
                     vendas.TotalVenda = total;
                     vendas.Observacao = txtObs.Text;
 
+                    txtTroco.Text = troco.ToString();
+
                     VendasDAO vDao = new VendasDAO();
                     vDao.CadastrarVenda(vendas);
+
+
+                    foreach (DataRow linha in carrinho.Rows)
+                    {
+
+                        ItemVenda item = new ItemVenda();
+                        item.CodigoVenda = vDao.ultimaVenda();
+                        item.CodigoProduto = int.Parse(linha["Código"].ToString());
+                        item.Quantidade = int.Parse(linha["Quantidade"].ToString());
+                        item.Subtotal = decimal.Parse(linha["Subtotal"].ToString());
+
+                        ItemVendaDAO iDao = new ItemVendaDAO();
+                        iDao.CadastrarItemVenda(item);
+                    }
+
+                    MessageBox.Show("Venda cadastrada com sucesso!!!");
                 }
 
             }
