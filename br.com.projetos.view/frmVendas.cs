@@ -28,40 +28,22 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         #endregion
 
         #region Objs
-        Clientes clientes = new Clientes();
+        Clientes obj = new Clientes();
+        ClienteDAO cDao = new ClienteDAO();
         DataTable carrinho = new DataTable();
         #endregion
 
         #region mtbCPF_KeyPress
         private void mtbCPF_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Clientes obj = new Clientes();
-            ClienteDAO objDAO = new ClienteDAO();
+            
             if (e.KeyChar == 13)
             {
-                obj = objDAO.BuscarClienteVendas(mtbCPF.Text);
+                obj = cDao.BuscarClienteVendas(mtbCPF.Text);
                 txtNomeCliente.Text = obj.Nome;
             }
         }
 
-        #endregion
-
-        #region txtCodigo_KeyPress
-        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Produtos obj = new Produtos();
-            ProdutosDAO objDAO = new ProdutosDAO();
-
-            if (e.KeyChar == 13)
-            {
-                obj = objDAO.BuscarProdutoVenda(int.Parse(txtCodigo.Text));
-
-                txtCodigo.Text = obj.Codigo.ToString();
-                txtDescricao.Text = obj.Descricao;
-                txtEstoque.Text = obj.Estoque.ToString();
-                txtValor.Text = obj.Preco.ToString();
-            }
-        }
         #endregion
 
         #region Load
@@ -142,13 +124,26 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.view
         #region btnPagamentos_Click
         private void btnPagamento_Click(object sender, EventArgs e)
         {
-            DateTime data = DateTime.Parse(mtbData.Text);
-            DateTime hora = DateTime.Parse(mtbHora.Text);
-
-            frmPagamentos tela = new frmPagamentos(clientes, carrinho, data, hora);
-            tela.txtTotal.Text = txtTotalValor.Text.ToString();
-            tela.ShowDialog();
+            frmPagamentos pg = new frmPagamentos(obj,carrinho);
+            pg.txtTotal.Text = txtTotalValor.Text; 
+            pg.ShowDialog();
         }
         #endregion
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Produtos obj = new Produtos();
+            ProdutosDAO objDAO = new ProdutosDAO();
+
+            if (e.KeyChar == 13)
+            {
+                obj = objDAO.BuscarProdutoVenda(int.Parse(txtCodigo.Text));
+
+                txtCodigo.Text = obj.Codigo.ToString();
+                txtDescricao.Text = obj.Descricao;
+                txtEstoque.Text = obj.Estoque.ToString();
+                txtValor.Text = obj.Preco.ToString();
+            }
+        }
     }
 }
