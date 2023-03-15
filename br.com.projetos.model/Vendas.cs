@@ -16,7 +16,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.model
         public int CodigoCliente { get; set; }
         public DateTime Data { get; set; }
         public DateTime Hora { get; set; }
-        public double TotalVenda { get; set; }
+        public decimal TotalVenda { get; set; }
         public string Observacao { get; set; }
         #endregion
     }
