@@ -32,7 +32,7 @@ namespace ProjetosControle_De_Vendas.br.com.projetos.dao
         {
             try
             {
-                string sql = @"insert into bdvendas.tb_itensvenda (venda_id, produto_id, qtd, subtotal)
+                string sql = @"insert into bdvendas.tb_itensvendas (venda_id, produto_id, qtd, subtotal)
 values (@venda_id, @produto_id, @qtd, @subtotal)";
 
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
